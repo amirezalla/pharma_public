@@ -1,0 +1,35 @@
+<?php
+
+return [
+    'name' => 'Fatture',
+    'create' => 'Nuova fattura',
+    'edit' => 'Modifica fattura',
+    'print' => 'Stampa fattura',
+    'download' => 'Scarica fattura',
+    'heading' => 'Fattura',
+    'invoice_for_job' => '',
+    'table' => [
+        'code' => 'Codice',
+        'amount' => 'Quantità',
+    ],
+    'detail' => [
+        'invoice_for' => 'Fattura per',
+        'invoice_to' => 'Fattura',
+        'tax_id' => 'codice fiscale',
+        'code' => 'Codice Fattura',
+        'issue_at' => 'Emissione a',
+        'description' => 'Descrizione',
+        'qty' => 'Qty',
+        'amount' => 'Quantità',
+        'discount' => 'Sconto',
+        'grand_total' => 'Somma totale',
+        'shipping_fee' => 'Tassa di spedizione',
+        'sub_total' => 'Totale parziale',
+        'tax' => 'Imposta',
+        'total' => 'Totale',
+    ],
+    'total_amount' => 'Importo totale',
+    'payment_info' => 'Informazioni sul pagamento',
+    'payment_method' => 'Metodo di pagamento',
+    'payment_status' => 'Stato del pagamento',
+];
