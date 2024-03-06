@@ -53,6 +53,8 @@
                         $responseCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
                         curl_close($ch);
 
+                        dd($defaultImgUrl);
+
                         if ($responseCode == 200) {
                             $Image = $productImgUrl;
                         } else {
