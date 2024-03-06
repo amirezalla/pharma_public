@@ -82,6 +82,19 @@ class PublicController extends Controller
                 ])
                 ->sendUsingTemplate('notice', null, $args);
 
+                EmailHandler::setModule(CONTACT_MODULE_SCREEN_NAME)
+                ->setVariableValues([
+                    'contact_name' => $contact->name ?? 'N/A',
+                    'contact_subject' => $contact->subject ?? 'N/A',
+                    'contact_email' => $contact->email ?? 'N/A',
+                    'contact_phone' => $contact->phone ?? 'N/A',
+                    'contact_address' => $contact->address ?? 'N/A',
+                    'contact_content' => $contact->content ?? 'N/A',
+                ])
+                ->sendUsingTemplate('notice',
+                ['info@marigopharma.it','alongobardi@marigoitalia.it']);
+
+
             return $response->setMessage("Il suo messaggio è stato inviato con successo!");
         } catch (Exception $exception) {
             info($exception->getMessage());

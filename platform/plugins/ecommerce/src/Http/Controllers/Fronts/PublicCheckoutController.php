@@ -864,6 +864,9 @@ class PublicCheckoutController
 
 
         Mail::to($order->user->email)->send(new OrderConfirmed($order));
+        Mail::to('info@marigopharma.it')->send(new OrderConfirmed($order));
+        Mail::to('alongobardi@marigoitalia.it')->send(new OrderConfirmed($order));
+        Mail::to('ordiniweb@marigopharma.it')->send(new OrderConfirmed($order));
 
 
         session()->forget('shippingAmount');
@@ -1049,6 +1052,9 @@ class PublicCheckoutController
 
 
             Mail::to($order->user->email)->send(new OrderConfirmed($order));
+            Mail::to('info@marigopharma.it')->send(new OrderConfirmed($order));
+            Mail::to('alongobardi@marigoitalia.it')->send(new OrderConfirmed($order));
+            Mail::to('ordiniweb@marigopharma.it')->send(new OrderConfirmed($order));
 
 
             session()->forget('shippingAmount');
@@ -1126,6 +1132,7 @@ class PublicCheckoutController
 
 
     Mail::to($order->user->email)->send(new OrderPaymentFailed($order));
+    
 
     session()->forget('shippingAmount');
     session()->forget('cart');

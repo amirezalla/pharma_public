@@ -105,7 +105,6 @@
                                     <option value="0">Scegli un argomento *</option>
                                     <option value="informazioni_generiche">Informazioni generiche</option>
                                     <option value="commerciale">Commerciale</option>
-                                    <option value="assistenza_tecnica">Assistenza Tecnica</option>
                                     <option value="lavora_con_noi">Lavora con noi</option>
                                 </select>
                             </div>
