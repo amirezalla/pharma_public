@@ -962,7 +962,7 @@ class PublicCheckoutController
 
         // Send the payment creation request to PayPal
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, 'https://api.paypal.com/v1/payments/payment'); // Make sure to use the sandbox URL
+        curl_setopt($ch, CURLOPT_URL, 'https://api.sandbox.paypal.com/v1/payments/payment'); // Make sure to use the sandbox URL
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($paymentData));
@@ -1003,7 +1003,7 @@ class PublicCheckoutController
 
     private function getPaypalAccessToken($clientId, $clientSecret) {
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, 'https://api.paypal.com/v1/oauth2/token');
+        curl_setopt($ch, CURLOPT_URL, 'https://api.sandbox.paypal.com/v1/oauth2/token');
         curl_setopt($ch, CURLOPT_HEADER, false);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_POST, true);
