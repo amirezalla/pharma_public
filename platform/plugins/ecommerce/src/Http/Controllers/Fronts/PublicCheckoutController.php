@@ -921,8 +921,8 @@ class PublicCheckoutController
 
 
     private function initiatePaypalPayment($order, $request) {
-        $clientId = 'ASBmAoiN-ML8YpSOcxrpMyrG9Aa7V35LxHrBHCYmqdYRR-eWtLWZ3xyd3HpSOB7_q5Eogl8xXgAFSzot'; // Your Sandbox Client ID
-        $clientSecret = 'ELAKp4zsYrVzRKakVO_hhNwS0ARd7wa9zz5N-KjEVn75P3T18n1GGXteuOUXMSrQmLv7wNo0S1bLMzrz'; // Your Sandbox Secret
+        $clientId = 'ARZTIOvmPYyuYa8VU9kEwlo7cpBIUU8C-kxYN5u7qa1wuQ4XAzprE43TFgBZ9DemKASsbcw5qPVBZyy9'; // Your Sandbox Client ID
+        $clientSecret = 'EMgGQJIGfZtX8CshPT-m1VNykM6P6o-tLHd8ayvDE_x4EPSTzMlskYYxWoHwsGDFfhRoOjrwDZgNcQtk'; // Your Sandbox Secret
 
         // Get an access token from PayPal
         $accessToken = $this->getPaypalAccessToken($clientId, $clientSecret);
@@ -961,7 +961,7 @@ class PublicCheckoutController
 
         // Send the payment creation request to PayPal
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, 'https://api.sandbox.paypal.com/v1/payments/payment'); // Make sure to use the sandbox URL
+        curl_setopt($ch, CURLOPT_URL, 'https://api.paypal.com/v1/payments/payment'); // Make sure to use the sandbox URL
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($paymentData));
