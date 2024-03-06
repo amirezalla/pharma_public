@@ -1021,8 +1021,12 @@ class PublicCheckoutController
 
         curl_close($ch);
         $jsonResponse = json_decode($response, true);
-
-        return $jsonResponse['access_token'] ?? null;
+        if (isset($jsonResponse['access_token'])) {
+            return $jsonResponse['access_token'];
+        } else {
+            error_log('PayPal API Error: ' . $response);
+            return null;
+        }
     }
 
 
