@@ -169,7 +169,7 @@
 
                 }
                 axios
-                    .post("https://marigopharma.marigo.collaudo.biz/admin/ecommerce/offerte/update-offer", {
+                    .post("https://marigopharma.it/admin/ecommerce/offerte/update-offer", {
                         offerId: offerId
                     })
                     .then((response) => {
@@ -191,7 +191,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         axios.post(
-                                `https://marigopharma.marigo.collaudo.biz/admin/ecommerce/offerte/delete-offer`, {
+                                `https://marigopharma.it/admin/ecommerce/offerte/delete-offer`, {
                                     offerId: offerId
                                 })
                             .then((response) => {
@@ -208,7 +208,7 @@
 
             $(document).on('click', '.export-offer', function(evt) {
                 var offerId = $(this).closest('tr').data('id');
-                axios.post(`https://marigopharma.marigo.collaudo.biz/admin/ecommerce/offerte/exportOfferDetails`, {
+                axios.post(`https://marigopharma.it/admin/ecommerce/offerte/exportOfferDetails`, {
                         offer_id: offerId
                     })
                     .then((response) => {

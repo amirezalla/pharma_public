@@ -34,7 +34,7 @@
 {{--                        <a href="https://www.marigopharma.it/richiesta-informazioni-prodotti-per-farmacie-e-parafarmacie/" tabindex="-1" class="pushed custom-link btn btn-md btn-accent btn-outline btn-icon-left btn-block">RICHIEDI INFORMAZIONI <i class="fa fa-envelope"></i></a>--}}
 
                                                 <a  href="{{ $card['catalog'] }}" target="_blank" class="btn btn-md btn-outline mt-1">SCARICA IL CATALOGO <i class="fa fa-download m-1"  ></i></a>
-                                                <a href="https://marigopharma.marigo.collaudo.biz/contact" class="btn btn-md btn-outline mt-1">RICHIEDI INFORMAZIONI <i class="fa fa-envelope m-1"></i></a>
+                                                <a href="https://marigopharma.it/contact" class="btn btn-md btn-outline mt-1">RICHIEDI INFORMAZIONI <i class="fa fa-envelope m-1"></i></a>
                     </div>
                 </div>
             </div>

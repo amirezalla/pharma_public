@@ -437,7 +437,7 @@
     $(document).on('change', '.editExpiringdate', function(evt) {
         var offerId=$('.offer-id-hidden').val();
         const newDate = this.value;
-        axios.post('https://marigopharma.marigo.collaudo.biz/admin/ecommerce/offerte/updateExpirationDate', {
+        axios.post('https://marigopharma.it/admin/ecommerce/offerte/updateExpirationDate', {
             offer_id: offerId,
             expiration_date: newDate
         })

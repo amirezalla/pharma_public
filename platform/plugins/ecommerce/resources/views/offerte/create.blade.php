@@ -277,7 +277,7 @@
                                 <input type="date" id="expiring_date" min="<?= date('Y-m-d'); ?>">
                         </div>
 
-                        <form action="https://marigopharma.marigo.collaudo.biz/admin/ecommerce/customImport/sconto" method="post" class="sconto-form">
+                        <form action="https://marigopharma.it/admin/ecommerce/customImport/sconto" method="post" class="sconto-form">
                             @csrf
                             <input class="mt-5 btn btn-primary mb-5 col-6 discount-check-submit" value="Creare Sconto">
                         </form>
@@ -530,7 +530,7 @@
                 }
             });
             axios
-                .post("https://marigopharma.marigo.collaudo.biz/filter-customers", {
+                .post("https://marigopharma.it/filter-customers", {
                     customers:customers,
                     consumabili:idArray,
                     agents: uncheckedAgentIds,
@@ -659,7 +659,7 @@
                 else{var page=1}
 
                 axios
-                .get("https://marigopharma.marigo.collaudo.biz/admin/ecommerce/products/get-list-products-for-select", { params:{
+                .get("https://marigopharma.it/admin/ecommerce/products/get-list-products-for-select", { params:{
                 keyword: $(this).val(),
                 include_variation: true,
                 page: page
@@ -694,7 +694,7 @@
                 else{var page=1}
 
                 axios
-                .get("https://marigopharma.marigo.collaudo.biz/admin/ecommerce/products/get-list-products-for-select", { params:{
+                .get("https://marigopharma.it/admin/ecommerce/products/get-list-products-for-select", { params:{
                 keyword: $(this).val(),
                 include_variation: 0,
                 page: page
@@ -767,7 +767,7 @@
 
 
             axios
-            .post("https://marigopharma.marigo.collaudo.biz/get-customers-by-product", {products: idArray,collegati:1})
+            .post("https://marigopharma.it/get-customers-by-product", {products: idArray,collegati:1})
             .then((response) => {
                 console.log(response.data);
                 var customers = response.data.incustomers;
@@ -890,7 +890,7 @@
             idArray.push(rowId);
             });
             axios
-            .post("https://marigopharma.marigo.collaudo.biz/get-customers-by-product", {products: idArray})
+            .post("https://marigopharma.it/get-customers-by-product", {products: idArray})
             .then((response) => {
                 console.log(response.data);
                 var customers = response.data.incustomers;
@@ -1010,7 +1010,7 @@
                     idArray.push(rowId);
                     });
                     axios
-                    .post("https://marigopharma.marigo.collaudo.biz/get-customers-by-product", {products: idArray})
+                    .post("https://marigopharma.it/get-customers-by-product", {products: idArray})
                     .then((response) => {
                         console.log(response.data);
                         var customers = response.data.incustomers;
@@ -1141,7 +1141,7 @@
             var max = $('.max').val();
             var min = $('.min').val();
             axios
-                    .post("https://marigopharma.marigo.collaudo.biz/get-customers-by-product", {products: {id:idArray[0],max:max,min:min},scontorange:true})
+                    .post("https://marigopharma.it/get-customers-by-product", {products: {id:idArray[0],max:max,min:min},scontorange:true})
                     .then((response) => {
                         console.log(response.data);
                         var customers = response.data.incustomers;
@@ -1263,7 +1263,7 @@
                     idArray.push(rowId);
                     });
                     axios
-                    .post("https://marigopharma.marigo.collaudo.biz/get-customers-by-product", {products: idArray})
+                    .post("https://marigopharma.it/get-customers-by-product", {products: idArray})
                     .then((response) => {
                         console.log(response.data);
                         var customers = response.data.incustomers;
@@ -1427,7 +1427,7 @@
             idArray.push(rowId);
             });
             axios
-            .post("https://marigopharma.marigo.collaudo.biz/get-customers-by-product", {products: idArray})
+            .post("https://marigopharma.it/get-customers-by-product", {products: idArray})
             .then((response) => {
                 console.log(response.data);
                 var customers = response.data.incustomers;
@@ -1557,7 +1557,7 @@
                 idArray.push(rowId);
                 });
                 axios
-                    .post("https://marigopharma.marigo.collaudo.biz/get-customers-by-consumabili", {consumabili: idArray})
+                    .post("https://marigopharma.it/get-customers-by-consumabili", {consumabili: idArray})
                     .then((response) => {
                         console.log(response.data);
                         var customers = response.data.incustomers;
@@ -1784,7 +1784,7 @@
             const startDate = document.getElementById('start_date').value;
 
 
-            axios.post("https://marigopharma.marigo.collaudo.biz/admin/ecommerce/offerte/checkProductHasActiveOffer", {product_ids: product_ids,date:startDate})
+            axios.post("https://marigopharma.it/admin/ecommerce/offerte/checkProductHasActiveOffer", {product_ids: product_ids,date:startDate})
             .then((response) => {
 
                 if(response.data){
@@ -1797,7 +1797,7 @@
                         confirmButtonText: 'Okay'
                     });
                 }else{
-                    axios.post("https://marigopharma.marigo.collaudo.biz/checkIfBetter", {consumabili: dataArray, customers:checkedUserIds,offer_type:offerType})
+                    axios.post("https://marigopharma.it/checkIfBetter", {consumabili: dataArray, customers:checkedUserIds,offer_type:offerType})
                     .then((response) => {
                         var res=response.data;
                         var html=`
@@ -1928,10 +1928,10 @@
                                 offer_type: offerType,
                                 offer_details:res
                               };
-                              axios.post('https://marigopharma.marigo.collaudo.biz/saveOffer', formData)
+                              axios.post('https://marigopharma.it/saveOffer', formData)
                                 .then((response) => {
                                   // Handle the response from the server
-                                  window.location.href = 'https://marigopharma.marigo.collaudo.biz/admin/ecommerce/offerte';
+                                  window.location.href = 'https://marigopharma.it/admin/ecommerce/offerte';
                                 })
                                 .catch((error) => {
                                   // Handle any errors that occurred during the request

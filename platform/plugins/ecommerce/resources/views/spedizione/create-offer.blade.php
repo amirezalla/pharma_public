@@ -116,7 +116,7 @@
             console.log(keyword);
 
             axios
-                .get("https://marigopharma.marigo.collaudo.biz/admin/customers/get-list-customers-for-search", {
+                .get("https://marigopharma.it/admin/customers/get-list-customers-for-search", {
                     params: {
                         keyword: $(this).val(),
                     }

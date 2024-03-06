@@ -467,7 +467,7 @@ class CreaSconto extends BaseController
             }
         }
 
-        return Redirect::to('https://marigopharma.marigo.collaudo.biz/admin/discounts');
+        return Redirect::to('https://marigopharma.it/admin/discounts');
 
 
 

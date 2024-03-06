@@ -20,7 +20,7 @@
         <div class="search-style-2 mb-4">
             <div class="row">
                 <div class="col-12">
-                    <form action="https://marigopharma.marigo.collaudo.biz/product-categories/prodotti-consumabili" method="get"
+                    <form action="https://marigopharma.it/product-categories/prodotti-consumabili" method="get"
                         id='queryonsearch'>
                         <strong style="color: #005ba1;font-size: 16px;font-weight: 700;display: block;"
                             class="mb-1">Prodotto</strong>

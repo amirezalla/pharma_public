@@ -8,6 +8,6 @@
 
 <br />
 
-<p style='font-size:17px;'>Per qualsiasi informazione, contattaci compilando <a href='https://marigopharma.marigo.collaudo.biz/contact'>il modulo richiesta informazioni </a>sul nostro sito web</p>
+<p style='font-size:17px;'>Per qualsiasi informazione, contattaci compilando <a href='https://marigopharma.it/contact'>il modulo richiesta informazioni </a>sul nostro sito web</p>
 
 {{ footer }}

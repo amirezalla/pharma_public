@@ -108,28 +108,28 @@
                                                 <ul class="profile-dropdown-wrap profile-dropdown-hm2">
                                                     <div class="row" style="width:100%"> <a
                                                             class="bg-light item-profile-wrap"
-                                                            href="https://marigopharma.marigo.collaudo.biz/customer/edit-account">Il
+                                                            href="https://marigopharma.it/customer/edit-account">Il
                                                             mio profilo</a></div>
                                                     <div class="row" style="width:100%"><a
                                                             class="bg-light item-profile-wrap"
-                                                            href="https://marigopharma.marigo.collaudo.biz/customer/orders">I
+                                                            href="https://marigopharma.it/customer/orders">I
                                                             miei ordini</a></div>
                                                     <div class="row" style="width:100%"><a
                                                             class="bg-light item-profile-wrap"
-                                                            href="https://marigopharma.marigo.collaudo.biz/products?userid={{ auth('customer')->user()->id }}&preferiti_page=1&wishlist=1">I
+                                                            href="https://marigopharma.it/products?userid={{ auth('customer')->user()->id }}&preferiti_page=1&wishlist=1">I
                                                             miei preferiti</a></div>
                                                     <div class="row" style="width:100%"> <a
                                                             class="bg-light item-profile-wrap"
-                                                            href="https://marigopharma.marigo.collaudo.biz/customer/change-password">Modifica
+                                                            href="https://marigopharma.it/customer/change-password">Modifica
                                                             password</a></div>
                                                     <div class="row" style="width:100%"> <a
                                                             class="bg-light item-profile-wrap" target="_blank"
-                                                            href="https://marigopharma.marigo.collaudo.biz/storage/2124-condizioni-generali-di-vendita-webview.pdf">Condizioni
+                                                            href="https://marigopharma.it/storage/2124-condizioni-generali-di-vendita-webview.pdf">Condizioni
                                                             Generali</a></div>
                                                     <div class="row" style="width:100%"><a
                                                             style="background: #51B448;color:white !important"
                                                             class="item-profile-wrap"
-                                                            href="https://marigopharma.marigo.collaudo.biz/customer/logout">Esci</a>
+                                                            href="https://marigopharma.it/customer/logout">Esci</a>
                                                     </div>
 
                                                 </ul>

@@ -437,7 +437,7 @@ background-color: rgba(0,0,0,0.4);">
                 modal.style.display = "none";
             }
         }
-        var url = 'https://marigopharma.marigo.collaudo.biz/storage/2124-condizioni-generali-di-vendita-webview.pdf';
+        var url = 'https://marigopharma.it/storage/2124-condizioni-generali-di-vendita-webview.pdf';
 
         var pdfjsLib = window['pdfjs-dist/build/pdf'];
 

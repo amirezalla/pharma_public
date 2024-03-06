@@ -101,11 +101,11 @@
                                                                                             <tr style="border:0;">
                                                                                                 <td
                                                                                                     style="border:0;padding:15px;border-collapse:collapse; height: 70px; line-height: 70px">
-                                                                                                    <a href="https://marigopharma.marigo.collaudo.biz"
+                                                                                                    <a href="https://marigopharma.it"
                                                                                                         style="color: #fff; text-decoration: none !important;"
                                                                                                         target="_blank">
                                                                                                         <img title="Logo"
-                                                                                                            src="https://marigopharma.marigo.collaudo.biz/storage/logo-header-4.png"
+                                                                                                            src="https://marigopharma.it/storage/logo-header-4.png"
                                                                                                             height="70"
                                                                                                             style="max-width: 107px; display: block !important; height: auto !important;"
                                                                                                             border="0"
@@ -177,7 +177,7 @@
                                                     </div>
                                                     <div class="card-footer text-body-secondary">
                                                         <p> Per qualsiasi informazione,ci può contattare compilando <a
-                                                                href='https://marigopharma.marigo.collaudo.biz/contact'>il
+                                                                href='https://marigopharma.it/contact'>il
                                                                 Modulo richiesta informazioni </a> sul nostro sito
                                                             web<br>
                                                         </p>

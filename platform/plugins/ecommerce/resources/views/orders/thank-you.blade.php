@@ -26,7 +26,7 @@
 
 {{--                <a href="{{ route('public.index') }}" class="btn payment-checkout-btn"> {{ __('Continue shopping') }} </a>--}}
 
-                <a href="https://marigopharma.marigo.collaudo.biz/customer/orders" class="btn payment-checkout-btn"style="background:#56b448"> {{ __('I tuoi ordini') }} </a>
+                <a href="https://marigopharma.it/customer/orders" class="btn payment-checkout-btn"style="background:#56b448"> {{ __('I tuoi ordini') }} </a>
 
             </div>
 
