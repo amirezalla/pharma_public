@@ -491,7 +491,7 @@ class CustomImport extends BaseController
                         $productItem = $this->_generateProduct($productId,$product_name,$productsWithoutVariant,$price,$brands,$taxId);
                         // product_id va tax_id be table ec_tax_products ezafe shavad
                         $this->_generateTranslationProduct($product_name,$productItem);
-                        $this->_generateSlugProduct($product_name,$productItem);
+                        $this->_generateSlugProduct($product_name.$productsWithoutVariant['codice'],$productItem);
                     }
                     $productItem->categories()->sync([$productsWithoutVariant['fk_linea_id']]);
                 }
