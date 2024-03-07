@@ -18,7 +18,7 @@ Cordiali saluti, <br />
 </span>
 
 <span style='font-size:17px;'>
-<strong>{{ site_title }}</strong>
+<strong>Marigo Pharma</strong>
 </span>
 
 
