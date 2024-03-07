@@ -28,13 +28,15 @@
                 @if (isset($_GET['verify_message']))
                     @if ($_GET['verify_message'] == 'true')
                         <div class="alert alert-info">
-                            La tua verifica è già stata completata. Devi attendere alcune ore perché l'amministratore
-                            approva la tua richiesta di registrazione!
+                            La sua email è stata verificata con successo, appena il suo account sarà attivato, riceverà
+                            una nuova comunicazione dal nostro ufficio commerciale. Non c’è bisogno di ulteriori azioni
+                            da parte sua.
                         </div>
                     @elseif($_GET['verify_message'] == 'neutral')
                         <div class="alert alert-success">
-                            La tua verifica è stata completata. Devi attendere alcune ore perché l'amministratore
-                            approva la tua richiesta di registrazione!
+                            La sua email è stata verificata con successo, appena il suo account sarà attivato, riceverà
+                            una nuova comunicazione dal nostro ufficio commerciale. Non c’è bisogno di ulteriori azioni
+                            da parte sua.
                         </div>
                     @endif
                 @endif

@@ -4,7 +4,9 @@
             <div class="col-md-6">
                 @if (isset($_GET['verify-message']))
                     <div class="alert alert-info">
-                        La tua verifica è stata completata. Devi attendere alcune ore perché l'amministratore approvi la tua richiesta di registrazione!
+                        La sua email è stata verificata con successo, appena il suo account sarà attivato, riceverà una
+                        nuova comunicazione dal nostro ufficio commerciale. Non c’è bisogno di ulteriori azioni da parte
+                        sua.
                     </div>
                 @endif
 
@@ -23,7 +25,8 @@
                         <div class="form-field-wrapper form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label>{{ __('Email') }} <span class="required">*</span></label>
                             <input id="email" class="input-md form-full-width" name="email"
-                                   placeholder="{{ __('Email') }}" size="30" aria-required="true" required type="email">
+                                placeholder="{{ __('Email') }}" size="30" aria-required="true" required
+                                type="email">
                             @if ($errors->has('email'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('email') }}</strong>
@@ -34,12 +37,12 @@
                         <div class="form-field-wrapper form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label>{{ __('Password') }} <span class="required">*</span></label>
                             <input id="password" class="input-md form-full-width" name="password"
-                                   placeholder="{{ __('Password') }}" size="30" aria-required="true" required
-                                   type="password">
+                                placeholder="{{ __('Password') }}" size="30" aria-required="true" required
+                                type="password">
                             @if ($errors->has('password'))
                                 <span class="help-block">
-                                                <strong>{{ $errors->first('password') }}</strong>
-                                            </span>
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
                             @endif
                         </div>
 
