@@ -54,6 +54,8 @@
                                             <label class="btn-success p-1 rounded small"
                                                 style="background-color:#f9844a">Mancato
                                                 Pagamento</label>
+                                        @elseif ($payment->payment_channel == 'paypal' && $payment->status == 'completed')
+                                            <label class="btn-success p-1 rounded small">Completato</label>
                                         @elseif ($payment->payment_channel != 'paypal' && $payment->status == 'completed')
                                             <label class="btn-success p-1 rounded small">Completato</label>
                                         @endif
@@ -76,13 +78,13 @@
 
                                             @if ($payment)
                                                 @if ($payment->payment_channel == 'paypal' && $payment->status == 'pending')
-                                                <form action="{{ route('customer.orders.reorder', $order->id) }}" method="post"
-                                                class="col-3">
-                                                @csrf
+                                                    <form action="{{ route('customer.orders.reorder', $order->id) }}"
+                                                        method="post" class="col-3">
+                                                        @csrf
 
                                                         <button class='btn btn-primary btn-sm'
-                                                        style="background-color:#f9844a;color:white !important;width:40px;height:40px;border-radius: 50%;text-align: center;display: flex;flex-direction: row;justify-content: center;align-items: center;">
-                                                        <i class="fa fa-credit-card"></i>
+                                                            style="background-color:#f9844a;color:white !important;width:40px;height:40px;border-radius: 50%;text-align: center;display: flex;flex-direction: row;justify-content: center;align-items: center;">
+                                                            <i class="fa fa-credit-card"></i>
                                                         </button>
                                                     </form>
                                                 @else
@@ -93,7 +95,7 @@
                                                     </a>
                                                 @endif
                                             @else
-                                                <button  class='btn btn-primary btn-sm'
+                                                <button class='btn btn-primary btn-sm'
                                                     style="background-color:#f9844a;color:white !important;width:40px;height:40px;border-radius: 50%;text-align: center;display: flex;flex-direction: row;justify-content: center;align-items: center;">
                                                     <i class="fa fa-hourglass-start"></i>
                                                 </button>
