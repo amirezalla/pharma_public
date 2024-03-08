@@ -921,8 +921,8 @@ class PublicCheckoutController
 
 
     private function initiatePaypalPayment($order, $request) {
-        $clientId = 'ARZTIOvmPYyuYa8VU9kEwlo7cpBIUU8C-kxYN5u7qa1wuQ4XAzprE43TFgBZ9DemKASsbcw5qPVBZyy9'; // Your Sandbox Client ID
-        $clientSecret = 'EMgGQJIGfZtX8CshPT-m1VNykM6P6o-tLHd8ayvDE_x4EPSTzMlskYYxWoHwsGDFfhRoOjrwDZgNcQtk'; // Your Sandbox Secret
+        $clientId = 'AevDkzashx4wP-h4cYFl0m7o6X3QSc6e_idbN3FptOu_NQr0sjyZtXgQM56EgIGcWIVzmH1IQ3bW6jhB'; // Your Sandbox Client ID
+        $clientSecret = 'ED6ZJMI6-sxddGrmmFc-NFeQd8Tht75nFLF7B4KmCYcpB6iFNoGjB819mqAd-OWc7R1zp8M5pssMviN8'; // Your Sandbox Secret
 
         // Get an access token from PayPal
         $accessToken = $this->getPaypalAccessToken($clientId, $clientSecret);
