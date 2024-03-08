@@ -1033,6 +1033,7 @@ class PublicCheckoutController
 
         $order = $this->orderRepository->findOrFail($request->orderId);
 
+
         if($order){
             $arguments=[
                 'account_id' => auth('customer')->user()->id,
@@ -1079,9 +1080,7 @@ class PublicCheckoutController
 
 
 
-            $RealOrder=Order::where('token',$order->token)->where(function($query) {
-                $query->whereNull('shipping_option')
-                      ->orWhere('status', 'pending');})->first();
+            $RealOrder=Order::where('token',$order->token)->where('status','returned')->first();
             if($RealOrder){
                 $RealOrder->delete();
             }
