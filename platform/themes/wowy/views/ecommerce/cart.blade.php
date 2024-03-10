@@ -60,29 +60,56 @@
                                                         }
                                                     }
                                                     if ($flag) {
-                                                        $productVariation = ProductVariation::where('product_id', $cartItem->id)->first();
-                                                        $product_id = $productVariation ? $productVariation->configurable_product_id : $cartItem->id;
+                                                        $productVariation = ProductVariation::where(
+                                                            'product_id',
+                                                            $cartItem->id,
+                                                        )->first();
+                                                        $product_id = $productVariation
+                                                            ? $productVariation->configurable_product_id
+                                                            : $cartItem->id;
                                                     } else {
                                                         $product_id = $cartItem->id;
                                                     }
-                                                    $pricelist = DB::connection('mysql')->select("select * from ec_pricelist where product_id=$product_id and customer_id=$userid");
+                                                    $pricelist = DB::connection('mysql')->select(
+                                                        "select * from ec_pricelist where product_id=$product_id and customer_id=$userid",
+                                                    );
                                                     if ($pricelist) {
-                                                        $offerDetail = OffersDetail::where('product_id', $product_id)->where('customer_id', $userid)->first();
+                                                        $offerDetail = OffersDetail::where('product_id', $product_id)
+                                                            ->where('customer_id', $userid)
+                                                            ->first();
                                                         if ($offerDetail) {
                                                             $offer = Offers::find($offerDetail->offer_id);
                                                             if ($offer) {
                                                                 $offerType = $offer->offer_type;
                                                                 if ($offerType == 4 && $cartItem->qty >= 3) {
-                                                                    $cartTotal = $cartTotal - $cartItem->price * floor($cartItem->qty / 3);
+                                                                    $cartTotal =
+                                                                        $cartTotal -
+                                                                        $cartItem->price * floor($cartItem->qty / 3);
                                                                     $tax = str_replace('€', '', $cartItem->tax());
                                                                     $tax = str_replace(',', '.', $tax);
-                                                                    $cartIva = $cartIva - floatval(floatval($tax) * floor($cartItem->qty / 3));
+                                                                    $cartIva =
+                                                                        $cartIva -
+                                                                        floatval(
+                                                                            floatval($tax) * floor($cartItem->qty / 3),
+                                                                        );
                                                                 }
-                                                                if ($offerType == 6 && $cartItem->qty >= $offerDetail->quantity) {
+                                                                if (
+                                                                    $offerType == 6 &&
+                                                                    $cartItem->qty >= $offerDetail->quantity
+                                                                ) {
                                                                     $tax = str_replace('€', '', $cartItem->tax());
                                                                     $tax = str_replace(',', '.', $tax);
-                                                                    $cartIva = $cartIva - floatval($tax) * $cartItem->qty + (($product->tax->percentage * $offerDetail->product_price) / 100) * $cartItem->qty;
-                                                                    $cartTotal = $cartTotal - $cartItem->price * $cartItem->qty + $offerDetail->product_price * $cartItem->qty;
+                                                                    $cartIva =
+                                                                        $cartIva -
+                                                                        floatval($tax) * $cartItem->qty +
+                                                                        (($product->tax->percentage *
+                                                                            $offerDetail->product_price) /
+                                                                            100) *
+                                                                            $cartItem->qty;
+                                                                    $cartTotal =
+                                                                        $cartTotal -
+                                                                        $cartItem->price * $cartItem->qty +
+                                                                        $offerDetail->product_price * $cartItem->qty;
                                                                     $cartItem->price = $offerDetail->product_price;
                                                                 }
                                                             }
@@ -100,13 +127,20 @@
                                                                 value="{{ $cartItem->rowId }}">
                                                             <a href="{{ $product->original_product->url }}">
                                                                 @php
-                                                                    $defaultImgUrl = RvMedia::getImageUrl(RvMedia::getDefaultImage());
-                                                                    $productImgUrl = RvMedia::getImageUrl($cartItem->options['image']);
+                                                                    $defaultImgUrl = RvMedia::getImageUrl(
+                                                                        RvMedia::getDefaultImage(),
+                                                                    );
+                                                                    $productImgUrl = RvMedia::getImageUrl(
+                                                                        $cartItem->options['image'],
+                                                                    );
                                                                     $ch = curl_init($productImgUrl);
                                                                     curl_setopt($ch, CURLOPT_NOBODY, true);
                                                                     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
                                                                     curl_exec($ch);
-                                                                    $responseCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                                                                    $responseCode = curl_getinfo(
+                                                                        $ch,
+                                                                        CURLINFO_HTTP_CODE,
+                                                                    );
                                                                     curl_close($ch);
 
                                                                     if ($responseCode == 200) {
@@ -140,9 +174,11 @@
                                                                                 {{-- It's okay --}}
                                                                                 @php
                                                                                     if ($pricelist) {
-                                                                                        $priceOfProduct = $pricelist[0]->final_price;
+                                                                                        $priceOfProduct =
+                                                                                            $pricelist[0]->final_price;
                                                                                     } else {
-                                                                                        $priceOfProduct = $product->price;
+                                                                                        $priceOfProduct =
+                                                                                            $product->price;
                                                                                     }
                                                                                 @endphp
                                                                                 <span class="badge badge-secondary"
@@ -183,7 +219,8 @@
                                                                 @if ($offerDetail)
                                                                     @if ($offerType == 6 && $cartItem->qty >= $offerDetail->quantity)
                                                                         @php
-                                                                            $cartItem->price = $offerDetail->product_price;
+                                                                            $cartItem->price =
+                                                                                $offerDetail->product_price;
                                                                         @endphp
                                                                         <span>{{ format_price($cartItem->price) }}</span>
                                                                         <span>
@@ -194,7 +231,8 @@
                                                                         </span>
                                                                     @elseif ($offerType == 6 && $cartItem->qty < $offerDetail->quantity)
                                                                         @php
-                                                                            $cartItem->price = $pricelist[0]->final_price;
+                                                                            $cartItem->price =
+                                                                                $pricelist[0]->final_price;
                                                                         @endphp
                                                                         <span>{{ format_price($cartItem->price) }}</span>
                                                                     @elseif ($offerType == 4)
@@ -240,14 +278,21 @@
                                                                             $originalPrice = $pricelist[0]->final_price;
 
                                                                             // Calculate the total number of items that need to be paid for
-                                                                            $paidItemsCount = $cartItem->qty - floor($cartItem->qty / 3);
+                                                                            $paidItemsCount =
+                                                                                $cartItem->qty -
+                                                                                floor($cartItem->qty / 3);
 
                                                                             // Calculate the total price for the paid items
-                                                                            $totalPriceForPaidItems = $paidItemsCount * $originalPrice;
+                                                                            $totalPriceForPaidItems =
+                                                                                $paidItemsCount * $originalPrice;
 
                                                                             // Calculate the adjusted price per item, taking into account the quantity
                                                                             // This ensures that the cart item's price is adjusted to reflect the effective price after the offer
-$adjustedPricePerItem = $cartItem->qty > 0 ? $totalPriceForPaidItems / $cartItem->qty : 0;
+$adjustedPricePerItem =
+    $cartItem->qty > 0
+        ? $totalPriceForPaidItems /
+            $cartItem->qty
+        : 0;
 
 // Update the cart item's price to the adjusted price per item
                                                                             $cartItem->price = $adjustedPricePerItem;
@@ -366,9 +411,11 @@ $adjustedPricePerItem = $cartItem->qty > 0 ? $totalPriceForPaidItems / $cartItem
                                                                                 avrai uno sconto del
                                                                                 @php
                                                                                     if ($pricelist) {
-                                                                                        $priceOfProduct = $pricelist[0]->final_price;
+                                                                                        $priceOfProduct =
+                                                                                            $pricelist[0]->final_price;
                                                                                     } else {
-                                                                                        $priceOfProduct = $product->price;
+                                                                                        $priceOfProduct =
+                                                                                            $product->price;
                                                                                     }
                                                                                 @endphp
                                                                                 {{ get_sale_percentage($offerDetail->product_price, $priceOfProduct) }}
@@ -455,7 +502,10 @@ $adjustedPricePerItem = $cartItem->qty > 0 ? $totalPriceForPaidItems / $cartItem
                                                         @if (auth('customer'))
                                                             @php
                                                                 session()->forget('shippingAmount');
-                                                                $address = Botble\Ecommerce\Models\Address::where('customer_id', auth('customer')->user()->id)->first();
+                                                                $address = Botble\Ecommerce\Models\Address::where(
+                                                                    'customer_id',
+                                                                    auth('customer')->user()->id,
+                                                                )->first();
                                                                 $customerType = auth('customer')->user()->type;
                                                                 $region = $address->state;
 
@@ -463,34 +513,65 @@ $adjustedPricePerItem = $cartItem->qty > 0 ? $totalPriceForPaidItems / $cartItem
                                                                 $IVAPERCENTAGE = 1.22;
                                                                 $orderAmount = Cart::instance('cart')->rawTotal();
 
-                                                                if ($region == ('campania' || 'lazio') && $customerType == ('Farmacia' || 'Parafarmacia' || 'AltroPharma') && $orderAmount < 300) {
-                                                                    $shippingAmount = 10;
+                                                                if (
+                                                                    $region == ('campania' || 'lazio') &&
+                                                                    $customerType ==
+                                                                        ('Farmacia' ||
+                                                                            'Parafarmacia' ||
+                                                                            'AltroPharma') &&
+                                                                    $orderAmount < 300
+                                                                ) {
+                                                                    $shippingAmount = 0;
                                                                 }
-                                                                if ($region == ('campania' || 'lazio') && $customerType == ('Farmacia' || 'Parafarmacia' || 'AltroPharma') && $orderAmount >= 300) {
+                                                                if (
+                                                                    $region == ('campania' || 'lazio') &&
+                                                                    $customerType ==
+                                                                        ('Farmacia' ||
+                                                                            'Parafarmacia' ||
+                                                                            'AltroPharma') &&
+                                                                    $orderAmount >= 300
+                                                                ) {
                                                                     $shippingAmount = 5;
                                                                 }
-                                                                if ($customerType == ('Farmacia' || 'Parafarmacia' || 'AltroPharma')) {
-                                                                    $shippingAmount = 10;
+                                                                if (
+                                                                    $customerType ==
+                                                                    ('Farmacia' || 'Parafarmacia' || 'AltroPharma')
+                                                                ) {
+                                                                    $shippingAmount = 0;
                                                                 }
                                                                 session(['shippingAmount' => $shippingAmount]);
                                                                 $subtotal = Cart::instance('cart')->rawSubTotal();
 
                                                                 if (session('applied_spc')) {
-                                                                    $coupon = SPC::where('code', session('applied_spc'))->where('status', 1)->first();
+                                                                    $coupon = SPC::where('code', session('applied_spc'))
+                                                                        ->where('status', 1)
+                                                                        ->first();
 
-                                                                    if ($coupon->min_order != null && Cart::instance('cart')->rawSubTotal() + Cart::instance('cart')->rawTax() + $shippingAmount < $coupon->min_order) {
+                                                                    if (
+                                                                        $coupon->min_order != null &&
+                                                                        Cart::instance('cart')->rawSubTotal() +
+                                                                            Cart::instance('cart')->rawTax() +
+                                                                            $shippingAmount <
+                                                                            $coupon->min_order
+                                                                    ) {
                                                                         session()->forget('applied_spc');
                                                                         session()->forget('discount_amount');
                                                                     } else {
                                                                         $first = $shippingAmount;
                                                                         if ($coupon->type == 1) {
-                                                                            $shippingAmount = $shippingAmount * ((100 - $coupon->amount) / 100);
+                                                                            $shippingAmount =
+                                                                                $shippingAmount *
+                                                                                ((100 - $coupon->amount) / 100);
                                                                         } elseif ($coupon->type == 2) {
-                                                                            $shippingAmount = $coupon->amount >= $shippingAmount ? 0 : $shippingAmount - $coupon->amount;
+                                                                            $shippingAmount =
+                                                                                $coupon->amount >= $shippingAmount
+                                                                                    ? 0
+                                                                                    : $shippingAmount - $coupon->amount;
                                                                         } else {
                                                                             $shippingAmount = 0;
                                                                         }
-                                                                        $couponDiscountAmount = $first - $shippingAmount;
+                                                                        $couponDiscountAmount =
+                                                                            $first - $shippingAmount;
                                                                     }
                                                                 }
                                                             @endphp
@@ -531,7 +612,9 @@ $adjustedPricePerItem = $cartItem->qty > 0 ? $totalPriceForPaidItems / $cartItem
                                                             <tr>
                                                                 @php
                                                                     if (session('applied_coupon_code')) {
-                                                                        $couponcodefinal = session('applied_coupon_code');
+                                                                        $couponcodefinal = session(
+                                                                            'applied_coupon_code',
+                                                                        );
                                                                     } else {
                                                                         $couponcodefinal = session('applied_spc');
                                                                     }
