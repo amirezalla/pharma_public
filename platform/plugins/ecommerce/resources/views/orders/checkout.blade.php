@@ -229,12 +229,9 @@ background-color: rgba(0,0,0,0.4);">
                                             <div class="payment-checkout-form">
                                                 <input type="hidden" name="shipping_option"
                                                     value="{{ old('shipping_option', $defaultShippingOption) }}">
-
-                                                <ul class="list-group list_payment_method">
-                                                    <input id="shipping-method-default-3" name="shipping_method"
-                                                        class="magic-radio" checked="checked" data-option="3" type="radio"
-                                                        value="default">
-                                                </ul>
+                                                <input id="shipping-method-default-3" name="shipping_method"
+                                                    class="magic-radio" checked="checked" data-option="3" type="radio"
+                                                    value={{ $defaultShippingMethod }}>
 
                                             </div>
                                         @else
