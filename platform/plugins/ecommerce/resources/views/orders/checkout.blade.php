@@ -231,7 +231,7 @@ background-color: rgba(0,0,0,0.4);">
                                                     value="{{ old('shipping_option', $defaultShippingOption) }}">
                                                 <input id="shipping-method-default-3" name="shipping_method"
                                                     class="magic-radio" checked="checked" data-option="3" type="radio"
-                                                    value={{ $defaultShippingMethod }}>
+                                                    value="default">
 
                                             </div>
                                         @else
