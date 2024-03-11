@@ -492,7 +492,7 @@ class PublicCheckoutController
                 'currency' => $request->input('currency', strtoupper(get_application_currency()->title)),
                 'user_id' => $currentUserId,
                 'shipping_method' => 'deafult',
-                'shipping_option' => 4,
+                'shipping_option' => 3,
                 'shipping_amount' => (float)(session()->get('shippingAmount')),
                 'tax_amount' => $cartIva + ((float)(session()->get('shippingAmount')) * 0.22),
                 'sub_total' => $cartTotal,
