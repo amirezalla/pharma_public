@@ -55,7 +55,7 @@
                             <div class="flexbox-content p-none-important">
                                 <input type="hidden" name="method" value="default"
                                     class="input-hidden-shipping-method">
-                                <input type="hidden" name="option" value="3"
+                                <input type="hidden" name="option" value="4"
                                     class="input-hidden-shipping-option">
                                 <input type="text" readonly="readonly"
                                     placeholder="{{ trans('plugins/ecommerce::shipping.select_shipping_method') }}"
