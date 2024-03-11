@@ -227,8 +227,7 @@ background-color: rgba(0,0,0,0.4);">
                                         </div>
                                         @if (!empty($shipping))
                                             <div class="payment-checkout-form">
-                                                <input type="hidden" name="shipping_option"
-                                                    value="{{ old('shipping_option', $defaultShippingOption) }}">
+                                                <input type="hidden" name="shipping_option" value="3">
                                                 <input id="shipping-method-default-3" name="shipping_method"
                                                     class="magic-radio" checked="checked" data-option="3" type="radio"
                                                     value="default">
