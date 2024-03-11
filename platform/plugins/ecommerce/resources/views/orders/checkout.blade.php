@@ -233,7 +233,7 @@ background-color: rgba(0,0,0,0.4);">
                                                 <ul class="list-group list_payment_method">
                                                     <input id="shipping-method-default-3" name="shipping_method"
                                                         class="magic-radio" checked="checked" data-option="3" type="radio"
-                                                        value="3">
+                                                        value="default">
                                                 </ul>
 
                                             </div>
