@@ -1038,6 +1038,13 @@ class PublicCheckoutController
         $clientId = 'AevDkzashx4wP-h4cYFl0m7o6X3QSc6e_idbN3FptOu_NQr0sjyZtXgQM56EgIGcWIVzmH1IQ3bW6jhB';
         $clientSecret = 'ED6ZJMI6-sxddGrmmFc-NFeQd8Tht75nFLF7B4KmCYcpB6iFNoGjB819mqAd-OWc7R1zp8M5pssMviN8';
 
+        $accessToken = $this->getPaypalAccessToken($clientId, $clientSecret);
+
+        if (!$accessToken) {
+            dd('Failed to retrieve PayPal access token');
+            return null;
+        }
+        
         $paymentId = $request->paymentId; // Or however you retrieve the payment ID
         $paypalUrl = "https://api.paypal.com/v1/payments/payment/{$paymentId}";
     
