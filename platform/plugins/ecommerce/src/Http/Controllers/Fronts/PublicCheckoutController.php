@@ -67,6 +67,8 @@ use Botble\Ecommerce\Models\ProductVariation;
 use Botble\Ecommerce\Models\OrderProduct;
 use Botble\Ecommerce\Models\SPC;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
+
 
 
 
@@ -1032,6 +1034,30 @@ class PublicCheckoutController
     public function paypalConfirmed(Request $request){
 
         $order = $this->orderRepository->findOrFail($request->orderId);
+
+        $clientId = 'AevDkzashx4wP-h4cYFl0m7o6X3QSc6e_idbN3FptOu_NQr0sjyZtXgQM56EgIGcWIVzmH1IQ3bW6jhB';
+        $clientSecret = 'ED6ZJMI6-sxddGrmmFc-NFeQd8Tht75nFLF7B4KmCYcpB6iFNoGjB819mqAd-OWc7R1zp8M5pssMviN8';
+
+        $paymentId = $request->paymentId; // Or however you retrieve the payment ID
+        $paypalUrl = "https://api.paypal.com/v1/payments/payment/{$paymentId}";
+    
+        $response = Http::withHeaders([
+            'Content-Type' => 'application/json',
+            'Authorization' => 'Bearer ' . $accessToken,
+            // Add your PayPal API authentication headers here
+        ])->get($paypalUrl);
+    
+        $payerId = $response['payer']['payer_info']['payer_id'];
+
+        $executeUrl = "https://api-m.paypal.com/v1/payments/payment/{$paymentId}/execute";
+        $executeResponse = Http::withHeaders([
+            'Content-Type' => 'application/json',
+            'Authorization' => 'Bearer ' . $accessToken,
+            // Add your PayPal API authentication headers here
+        ])->post($executeUrl, ['payer_id' => $payerId]);
+
+
+
 
 
         if($order){
