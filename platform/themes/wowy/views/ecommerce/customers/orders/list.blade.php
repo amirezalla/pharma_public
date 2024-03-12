@@ -52,7 +52,7 @@
                                     @if ($payment)
                                         @if ($payment->payment_channel == 'paypal' && $payment->status == 'pending')
                                             <label class="btn-success p-1 rounded small"
-                                                style="background-color:#f9844a">{{ $order->id . $payment->payment_channel }}
+                                                style="background-color:#f9844a">{{ $order->id . $payment->payment_channel .$payment->status }}
                                                 Mancato
                                                 Pagamento</label>
                                         @elseif ($payment->payment_channel == 'paypal' && $payment->status == 'completed')
