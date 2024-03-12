@@ -1036,7 +1036,6 @@ class PublicCheckoutController
 
         if($order){
             $arguments=[
-                'account_id' => auth('customer')->user()->id,
                 'amount' => $order->amount,
                 'user_id'=>0,
                 'currency' => 'EUR',
