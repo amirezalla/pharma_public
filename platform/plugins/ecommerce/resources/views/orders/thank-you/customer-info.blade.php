@@ -1,13 +1,10 @@
 @php
     use Botble\Payment\Models\Payment;
-    if (!isset($payment)) {
-        $payment = Payment::where('order_id', $order->id)->first();
-        $paymentStatus = $payment->status;
-        $paymentChannel = $payment->payment_channel;
-    } else {
-        $paymentStatus = $payment->status;
-        $paymentChannel = $payment->payment_channel;
-    }
+
+    $payment = Payment::where('order_id', $order->id)->first();
+    $paymentStatus = $payment->status;
+    $paymentChannel = $payment->payment_channel;
+
     if ($paymentChannel == 'bank_transfer') {
         $paymentChannelName = 'Come da condizioni contrattuali';
     } else {
