@@ -954,7 +954,7 @@ class PublicCheckoutController
                         'total' => $orderTotal, // Make sure this is a correctly formatted string
                         'currency' => 'EUR'
                     ],
-                    'description' => 'Purchase from My Store'
+                    'description' => 'order number'.$order->id
                 ]
             ]
         ];
@@ -1043,10 +1043,11 @@ class PublicCheckoutController
                 'customer_id' => auth('customer')->user()->id,
                 'charge_id'=>$request->paymentId,
                 'payment_channel' => "paypal",
-                'status'=>'completed'
+                'status'=>'completed',
+                'order_id'=>$order->id
             ];
-            $payment = Payment::updateOrCreate(['order_id' => $order->id],$arguments);
-            $payment = Payment::on('mysql2')->updateOrCreate(['order_id' => $order->id], $arguments);
+            $payment = Payment::insert($arguments);
+            $payment = Payment::on('mysql2')->insert( $arguments);
             $order->update([
                 'is_confirmed' => true,
                 'status' => OrderStatusEnum::COMPLETED,
