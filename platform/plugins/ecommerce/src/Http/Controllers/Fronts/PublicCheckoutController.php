@@ -1050,7 +1050,7 @@ class PublicCheckoutController
             $order->update([
                 'is_confirmed' => true,
                 'status' => OrderStatusEnum::COMPLETED,
-                'payment_id'=>$payment->id
+                'payment_id'=>$request->paymentId
             ]);
 
 
