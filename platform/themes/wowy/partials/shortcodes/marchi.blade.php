@@ -2,7 +2,7 @@
     <div class="row">
         @dd($shortcode)
         @for ($i = 1; $i <= 20; $i++)
-            @if (isset($shortcode->['title' . $i]))
+            @if (isset($shortcode->'title' . $i))
                 <div class="col-md-3 mb-4">
                     <div class="card">
                         <img src="{{ $shortcode['foto' . $i] }}" class="card-img-top" alt="{{ $shortcode['title' . $i] }}">
