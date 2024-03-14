@@ -2,7 +2,7 @@
     <div class="row">
 
         @for ($i = 1; $i <= 20; $i++)
-            @if (clean($shortcode->{'title' . $i}))
+            @if ($shortcode->{'title' . $i})
                 <div class="col-md-3 mb-4">
                     <div class="card">
                         <img src="{{ $shortcode->{'foto' . $i} }}" class="card-img-top"
@@ -19,8 +19,7 @@
                         </div>
                     </div>
                 </div>
-                @endif
-
-            @endfor
+            @endif
+        @endfor
     </div>
 </div>
