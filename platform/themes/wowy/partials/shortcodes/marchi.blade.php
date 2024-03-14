@@ -1,11 +1,11 @@
 <div class="container mt-5">
-    <div class="row">#
+    <div class="row">
         @for ($i = 1; $i <= 20; $i++)
             @if ($shortcode->{'title' . $i})
                 <div class="col-md-3 mb-4">
                     <div class="card">
-                        <img src="{{ $shortcode->{'foto' . $i} }}" class="card-img-top"
-                            alt="{{ $shortcode->{'title' . $i} }}">
+                        <img src="{{ RvMedia::getImageUrl($shortcode->{'foto' . $i}, null, false, RvMedia::getDefaultImage()) }}"
+                            class="card-img-top" alt="{{ $shortcode->{'title' . $i} }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ $shortcode->{'title' . $i} }}</h5>
                             <hr>
