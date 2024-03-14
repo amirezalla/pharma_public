@@ -19,7 +19,8 @@
                         </div>
                     </div>
                 </div>
+                @endif
+
             @endfor
-        @endif
     </div>
 </div>
