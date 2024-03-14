@@ -1,7 +1,7 @@
 <div class="container mt-5">
     <div class="row">
         @dd($shortcode)
-        @for ($i = 1; $i <= 20; $i++)
+        {{-- @for ($i = 1; $i <= 20; $i++)
             @if (isset($shortcode->'title' . $i))
                 <div class="col-md-3 mb-4">
                     <div class="card">
@@ -19,6 +19,6 @@
                     </div>
                 </div>
             @endif
-        @endfor
+        @endfor --}}
     </div>
 </div>
