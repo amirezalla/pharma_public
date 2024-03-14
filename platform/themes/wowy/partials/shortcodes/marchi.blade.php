@@ -1,8 +1,7 @@
 <div class="container mt-5">
     <div class="row">
-        @dd($shortcode)
         @for ($i = 1; $i <= 20; $i++)
-            @if (isset($shortcode->attributes['foto' . $i]))
+            @if (isset($shortcode->attributes['title' . $i]))
                 <div class="col-md-3 mb-4">
                     <div class="card">
                         <img src="{{ $shortcode->attributes['foto' . $i] }}" class="card-img-top"
