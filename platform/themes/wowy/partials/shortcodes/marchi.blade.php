@@ -1,6 +1,6 @@
 <div class="container mt-5">
     <div class="row">
-
+        @dd($shortcode)
         @for ($i = 1; $i <= 20; $i++)
             <div class="col-md-3 mb-4">
                 <div class="card">
