@@ -10,7 +10,7 @@
                             <h5 class="card-title">{{ $shortcode->{'title' . $i} }}</h5>
                             <hr>
 
-                            <a href="{{ {{ RvMedia::getFileUrl($shortcode->{'catalog' . $i})}}" target="_blank"
+                            <a href=" {{ RvMedia::getFileUrl($shortcode->{'catalog' . $i}) }}" target="_blank"
                                 class="btn btn-md btn-outline mt-1">SCARICA IL CATALOGO <i
                                     class="fa fa-download m-1"></i></a>
                             <a href="https://marigopharma.it/contact" class="btn btn-md btn-outline mt-1">RICHIEDI
