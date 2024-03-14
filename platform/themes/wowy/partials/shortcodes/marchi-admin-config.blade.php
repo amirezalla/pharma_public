@@ -10,6 +10,6 @@
     </div>
     <div class="form-group">
         <label class="control-label">{{ __('Catalog :number', ['number' => $i]) }}</label>
-        {!! Form::mediaImage('catalog' . $i, Arr::get($attributes, 'catalog' . $i)) !!}
+        {!! Form::mediaFile('catalog' . $i, Arr::get($attributes, 'catalog' . $i)) !!}
     </div>
 @endfor
