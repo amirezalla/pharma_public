@@ -1,5 +1,6 @@
 <div class="container mt-5">
     <div class="row">
+        @dd(shortcode->attributes)
         @for ($i = 1; $i <= 20; $i++)
             @if (isset($shortcode->attributes['title' . $i]))
                 <div class="col-md-3 mb-4">
