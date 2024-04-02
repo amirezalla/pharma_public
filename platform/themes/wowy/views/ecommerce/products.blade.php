@@ -18,7 +18,10 @@
 
     Theme::asset()->usePath()->add('jquery-ui-css', 'css/plugins/jquery-ui.css');
     Theme::asset()->container('footer')->usePath()->add('jquery-ui-js', 'js/plugins/jquery-ui.js');
-    Theme::asset()->container('footer')->usePath()->add('jquery-ui-touch-punch-js', 'js/plugins/jquery.ui.touch-punch.min.js');
+    Theme::asset()
+        ->container('footer')
+        ->usePath()
+        ->add('jquery-ui-touch-punch-js', 'js/plugins/jquery.ui.touch-punch.min.js');
 
     $products->loadMissing(['categories', 'categories.slugable']);
     $request = request();
@@ -48,26 +51,27 @@
     @else
         <div class="col-12 related-listing">
             @if (request()->user('customer'))
-
-                <div class="row">
-                    <center>
-                        <h4 class="title-discounted mb-30" style="color:#005BA1; ">
-                            <i class="fas fa-circle" style="animation:pulse-blue 2s infinite;border-radius:10px"></i>
-                            &nbsp;
-                            &nbsp;
-                            Pensiamo che questi prodotti potrebbero interessarti
-                        </h4>
-                    </center>
-                    {{-- <div class="owl-carousel owl-theme discounted-carousel "> --}}
-                    <div class="owl-carousel owl-theme discounted-carousel ">
-                        @foreach ($discountedProducts as $discountedProduct)
-                            @include(Theme::getThemeNamespace() .
-                                    '::views.ecommerce.includes.cart-related-product-items',
-                                ['product' => $discountedProduct]
-                            )
-                        @endforeach
+                @if ($discountedProducts)
+                    <div class="row">
+                        <center>
+                            <h4 class="title-discounted mb-30" style="color:#005BA1; ">
+                                <i class="fas fa-circle" style="animation:pulse-blue 2s infinite;border-radius:10px"></i>
+                                &nbsp;
+                                &nbsp;
+                                Pensiamo che questi prodotti potrebbero interessarti
+                            </h4>
+                        </center>
+                        {{-- <div class="owl-carousel owl-theme discounted-carousel "> --}}
+                        <div class="owl-carousel owl-theme discounted-carousel ">
+                            @foreach ($discountedProducts as $discountedProduct)
+                                @include(Theme::getThemeNamespace() .
+                                        '::views.ecommerce.includes.cart-related-product-items',
+                                    ['product' => $discountedProduct]
+                                )
+                            @endforeach
+                        </div>
                     </div>
-                </div>
+                @endif
             @endif
         </div>
         <div class="col-lg-3">
