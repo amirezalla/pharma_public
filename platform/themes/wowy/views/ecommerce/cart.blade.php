@@ -715,25 +715,29 @@ $adjustedPricePerItem =
     </div>
     <div class="col-12 related-listing">
         @if (request()->user('customer'))
+            @if ($discountedProducts)
 
-            <div class="row">
-                <center>
-                    <h4 class="title-discounted mb-30" style="color:#005BA1; ">
-                        <i class="fas fa-circle" style="animation:pulse-blue 2s infinite;border-radius:10px"></i>
-                        &nbsp;
-                        &nbsp;
-                        Pensiamo che questi prodotti potrebbero interessarti
-                    </h4>
-                </center>
-                {{-- <div class="owl-carousel owl-theme discounted-carousel "> --}}
-                <div class="owl-carousel owl-theme discounted-carousel ">
-                    @foreach ($discountedProducts as $discountedProduct)
-                        @include(Theme::getThemeNamespace() . '::views.ecommerce.includes.cart-related-product-items',
-                            ['product' => $discountedProduct]
-                        )
-                    @endforeach
+
+                <div class="row">
+                    <center>
+                        <h4 class="title-discounted mb-30" style="color:#005BA1; ">
+                            <i class="fas fa-circle" style="animation:pulse-blue 2s infinite;border-radius:10px"></i>
+                            &nbsp;
+                            &nbsp;
+                            Pensiamo che questi prodotti potrebbero interessarti
+                        </h4>
+                    </center>
+                    {{-- <div class="owl-carousel owl-theme discounted-carousel "> --}}
+                    <div class="owl-carousel owl-theme discounted-carousel ">
+                        @foreach ($discountedProducts as $discountedProduct)
+                            @include(Theme::getThemeNamespace() .
+                                    '::views.ecommerce.includes.cart-related-product-items',
+                                ['product' => $discountedProduct]
+                            )
+                        @endforeach
+                    </div>
                 </div>
-            </div>
+            @endif
         @endif
     </div>
 </section>
