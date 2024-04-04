@@ -44,15 +44,15 @@ class Kernel extends ConsoleKernel
                 $body = $response->getBody()->getContents();
 
                 // Get the body of the response.
-                $message = "product scheduled task run successfully at " . now() .
+                $message = "product scheduled task run successfully at " .
                                 ". The status code was " . $statusCode .
                                 " and the response was " . $body;
                         Log::info($message);
 
                         // Send the email
-                        $receipents=['a.allahverdi@icoa.it','allahverdiamirreza@gmail.com'];
+                        $receipents=['a.allahverdi@icoa.it','s.akbarzadeh@icoa.it','d.mazzucchi@icoa.it','pdileva@marigoitalia.it'];
                         Mail::to($receipents)->send(new \App\Mail\ScheduledTaskCompleted($message));
-                })->everyMinute();
+                })->dailyAt('09:00');
 
         } catch (\Exception $e) {
             Log::error("Error in scheduled task: " . $e->getMessage());
@@ -75,16 +75,16 @@ class Kernel extends ConsoleKernel
                 $body = $response->getBody()->getContents();
 
                 // Get the body of the response.
-                $message = "PriceList scheduled task run successfully at " . now() .
+                $message = "PriceList scheduled task run successfully at " .
                                 ". The status code was " . $statusCode .
                                 " and the response was " . $body;
 
                 Log::info($message);
 
                 // Send the email
-                $receipents=['a.allahverdi@icoa.it','allahverdiamirreza@gmail.com'];
+                $receipents=['a.allahverdi@icoa.it','s.akbarzadeh@icoa.it','d.mazzucchi@icoa.it','pdileva@marigoitalia.it'];
                 Mail::to($receipents)->send(new \App\Mail\ScheduledTaskCompleted($message));
-            })->everyMinute();
+            })->dailyAt('09:00');
 
         } catch (\Exception $e) {
             Log::error("Error in scheduled task: " . $e->getMessage());
