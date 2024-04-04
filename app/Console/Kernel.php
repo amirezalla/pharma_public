@@ -44,7 +44,7 @@ class Kernel extends ConsoleKernel
                 $body = $response->getBody()->getContents();
 
                 // Get the body of the response.
-                $message = "product scheduled task run successfully at " .
+                $message = "product scheduled task run successfully " .
                                 ". The status code was " . $statusCode .
                                 " and the response was " . $body;
                         Log::info($message);
@@ -52,7 +52,7 @@ class Kernel extends ConsoleKernel
                         // Send the email
                         $receipents=['a.allahverdi@icoa.it','s.akbarzadeh@icoa.it','d.mazzucchi@icoa.it','pdileva@marigoitalia.it'];
                         Mail::to($receipents)->send(new \App\Mail\ScheduledTaskCompleted($message));
-                })->dailyAt('09:00');
+                })->dailyAt('00:00');
 
         } catch (\Exception $e) {
             Log::error("Error in scheduled task: " . $e->getMessage());
@@ -75,7 +75,7 @@ class Kernel extends ConsoleKernel
                 $body = $response->getBody()->getContents();
 
                 // Get the body of the response.
-                $message = "PriceList scheduled task run successfully at " .
+                $message = "PriceList scheduled task run successfully " .
                                 ". The status code was " . $statusCode .
                                 " and the response was " . $body;
 
@@ -84,7 +84,7 @@ class Kernel extends ConsoleKernel
                 // Send the email
                 $receipents=['a.allahverdi@icoa.it','s.akbarzadeh@icoa.it','d.mazzucchi@icoa.it','pdileva@marigoitalia.it'];
                 Mail::to($receipents)->send(new \App\Mail\ScheduledTaskCompleted($message));
-            })->dailyAt('09:00');
+            })->dailyAt('00:00');
 
         } catch (\Exception $e) {
             Log::error("Error in scheduled task: " . $e->getMessage());
