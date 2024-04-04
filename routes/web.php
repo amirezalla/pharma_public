@@ -67,6 +67,11 @@ use Illuminate\Routing\Router;
 Route::post('/welcome_mail', [QuestionnaireController::class, 'welcomeMail'])->name('welcomeMail');
 
 
+Route::get('/productImportSchedule', [CustomImport::class, 'importproduct']);
+Route::get('/pricelistImportSchedule', [CustomImport::class, 'pricelist']);
+// Route::get('/clientiImportSchedule', [CustomImport::class, 'users']);
+// Route::get('/ExpiringImportSchedule', [CustomImport::class, 'expiring']);
+// Route::get('/CustomersExportSchedule', [CustomExport::class, 'customerToDb']);
 
 Route::get('/importP', function () {
     return view('import');

@@ -607,7 +607,15 @@ class CustomImport extends BaseController
         } catch (Throwable $e) {
             dd($e);
         }
-        return redirect()->back()->withSuccess('IT WORKS!');
+
+        $currentUrl = request()->url(); // Gets the URL with query parameters
+
+        if (strpos($currentUrl, 'productImportSchedule') !== false) {
+            echo'ok';
+        }else{
+            return redirect()->back()->withSuccess('IT WORKS!');
+        }
+        
     }
 
     public function pricelist() {
@@ -638,8 +646,15 @@ $customerIds = Customer::whereNotNull('codice')->pluck('id');
                 }
             });
             $pricelist = [];
+            
+        $currentUrl = request()->url(); // Gets the URL with query parameters
 
-            return view('plugins/ecommerce::customImport.foreign-keys', compact('pricelist'));
+            if (strpos($currentUrl, 'pricelistImportSchedule') !== false) {
+                echo'ok';
+            }else{
+                return view('plugins/ecommerce::customImport.foreign-keys', compact('pricelist'));
+            }
+            
     }
     
 
