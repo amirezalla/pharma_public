@@ -1,4 +1,4 @@
-@php
+{{-- @php
     $brands = Theme\Wowy\Http\Controllers\WowyController::ajaxGetMarchi();
 @endphp
 
@@ -21,13 +21,13 @@
             </div>
         @endforeach
     </div>
-</div>
+</div> --}}
 
 
 
 
 
-{{-- <div class="container mt-5">
+<div class="container mt-5">
     <div class="row">
         @for ($i = 1; $i <= 20; $i++)
             @if ($shortcode->{'title' . $i})
@@ -49,5 +49,5 @@
                 </div>
             @endif
         @endfor
-    </div> --}}
+    </div>
 </div>
