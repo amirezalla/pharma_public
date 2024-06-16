@@ -337,7 +337,7 @@
                 .search) || [, ""])[1].replace(/\+/g, '%20')) || null;
         }
         // Check the current URL
-        if (window.location.pathname === '/disiscrizione-dalla-newsletter-marigo-lab') {
+        if (window.location.pathname === '/disiscrizione-dalla-newsletter-marigo-pharma') {
 
             var trackid = getURLParameter('trackid');
             var destid = getURLParameter('destid');
