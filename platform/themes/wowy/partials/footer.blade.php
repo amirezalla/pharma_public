@@ -332,102 +332,128 @@
     $(document).ready(function() {
 
 
-        const $passwordField = $("#txt-password");
-        const $togglePasswordButton = $("#toggle-password");
-        if (window.location.href.includes('register')) {
-            $togglePasswordButton.on("click", function() {
-                // Check if the URL contains 'was'
-
-                // Execute the toggle functionality only if the URL contains 'was'
-                if ($passwordField.attr("type") === "password") {
-                    $passwordField.attr("type", "text");
-                    $togglePasswordButton.removeClass("fa-eye").addClass("fa-eye-slash");
-                } else {
-                    $passwordField.attr("type", "password");
-                    $togglePasswordButton.removeClass("fa-eye-slash").addClass("fa-eye");
-                }
-
-            });
+        function getURLParameter(name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location
+                .search) || [, ""])[1].replace(/\+/g, '%20')) || null;
         }
+        // Check the current URL
+        if (window.location.pathname === '/disiscrizione-dalla-newsletter-marigo-lab') {
 
+            var trackid = getURLParameter('trackid');
+            var destid = getURLParameter('destid');
 
-        const $passwordField1 = $("#txt-password1");
-        const $togglePasswordButton1 = $("#toggle-password");
-        if (window.location.href.includes('login')) {
-            $togglePasswordButton.on("click", function() {
-                // Check if the URL contains 'was'
+            // Create the form dynamically with trackid and destid values
+            var formHtml = '<center><form action="/disiscrizione-newsletter/" method="get" id="dynamicForm">' +
+                '<input type="hidden" name="trackid" value="' + trackid + '">' +
+                '<input type="hidden" name="destid" value="' + destid + '">' +
+                "<button type='submit'>ANNULLA L'ISCRIZIONE DALLA NEWSLETTER</button>" +
+                '</form></center>';
 
-                // Execute the toggle functionality only if the URL contains 'was'
-                if ($passwordField1.attr("type") === "password") {
-                    $passwordField1.attr("type", "text");
-                    $togglePasswordButton1.removeClass("fa-eye").addClass("fa-eye-slash");
-                } else {
-                    $passwordField1.attr("type", "password");
-                    $togglePasswordButton1.removeClass("fa-eye-slash").addClass("fa-eye");
-                }
-
-            });
+            // Append the form to a target container, e.g., a div with an id of "formContainer"
+            $('#formContainer').append(formHtml);
         }
+    });
 
 
 
-        const $password_confirmation_Field = $("#txt-password-confirmation");
-        const $togglePassword_confirmation_Button = $("#toggle-password-confirmation");
 
-        $togglePassword_confirmation_Button.on("click", function() {
-            if ($password_confirmation_Field.attr("type") === "password") {
-                $password_confirmation_Field.attr("type", "text");
-                $togglePassword_confirmation_Button.removeClass("fa-eye").addClass("fa-eye-slash");
+
+    const $passwordField = $("#txt-password");
+    const $togglePasswordButton = $("#toggle-password");
+    if (window.location.href.includes('register')) {
+        $togglePasswordButton.on("click", function() {
+            // Check if the URL contains 'was'
+
+            // Execute the toggle functionality only if the URL contains 'was'
+            if ($passwordField.attr("type") === "password") {
+                $passwordField.attr("type", "text");
+                $togglePasswordButton.removeClass("fa-eye").addClass("fa-eye-slash");
             } else {
-                $password_confirmation_Field.attr("type", "password");
-                $togglePassword_confirmation_Button.removeClass("fa-eye-slash").addClass("fa-eye");
+                $passwordField.attr("type", "password");
+                $togglePasswordButton.removeClass("fa-eye-slash").addClass("fa-eye");
             }
+
         });
+    }
 
 
+    const $passwordField1 = $("#txt-password1");
+    const $togglePasswordButton1 = $("#toggle-password");
+    if (window.location.href.includes('login')) {
+        $togglePasswordButton.on("click", function() {
+            // Check if the URL contains 'was'
 
-        //for the change password
-
-        const $password_old1_Field = $("#old_password");
-        const $togglePassword_old1_Button = $("#toggle-old-password");
-
-        $togglePassword_old1_Button.on("click", function() {
-            if ($password_old1_Field.attr("type") === "password") {
-                $password_old1_Field.attr("type", "text");
-                $togglePassword_old1_Button.removeClass("fa-eye").addClass("fa-eye-slash");
+            // Execute the toggle functionality only if the URL contains 'was'
+            if ($passwordField1.attr("type") === "password") {
+                $passwordField1.attr("type", "text");
+                $togglePasswordButton1.removeClass("fa-eye").addClass("fa-eye-slash");
             } else {
-                $password_old1_Field.attr("type", "password");
-                $togglePassword_old1_Button.removeClass("fa-eye-slash").addClass("fa-eye");
+                $passwordField1.attr("type", "password");
+                $togglePasswordButton1.removeClass("fa-eye-slash").addClass("fa-eye");
             }
+
         });
+    }
 
 
-        const $password1_Field = $("#password");
-        const $togglePassword1_Button = $("#toggle-password");
 
-        $togglePassword1_Button.on("click", function() {
-            if ($password1_Field.attr("type") === "password") {
-                $password1_Field.attr("type", "text");
-                $togglePassword1_Button.removeClass("fa-eye").addClass("fa-eye-slash");
-            } else {
-                $password1_Field.attr("type", "password");
-                $togglePassword1_Button.removeClass("fa-eye-slash").addClass("fa-eye");
-            }
-        });
+    const $password_confirmation_Field = $("#txt-password-confirmation");
+    const $togglePassword_confirmation_Button = $("#toggle-password-confirmation");
+
+    $togglePassword_confirmation_Button.on("click", function() {
+        if ($password_confirmation_Field.attr("type") === "password") {
+            $password_confirmation_Field.attr("type", "text");
+            $togglePassword_confirmation_Button.removeClass("fa-eye").addClass("fa-eye-slash");
+        } else {
+            $password_confirmation_Field.attr("type", "password");
+            $togglePassword_confirmation_Button.removeClass("fa-eye-slash").addClass("fa-eye");
+        }
+    });
 
 
-        const $password_confirmation1_Field = $("#password_confirmation");
-        const $togglePassword_confirmation1_Button = $("#toggle-password-confirmation");
 
-        $togglePassword_confirmation1_Button.on("click", function() {
-            if ($password_confirmation1_Field.attr("type") === "password") {
-                $password_confirmation1_Field.attr("type", "text");
-                $togglePassword_confirmation1_Button.removeClass("fa-eye").addClass("fa-eye-slash");
-            } else {
-                $password_confirmation1_Field.attr("type", "password");
-                $togglePassword_confirmation1_Button.removeClass("fa-eye-slash").addClass("fa-eye");
-            }
-        });
+    //for the change password
+
+    const $password_old1_Field = $("#old_password");
+    const $togglePassword_old1_Button = $("#toggle-old-password");
+
+    $togglePassword_old1_Button.on("click", function() {
+        if ($password_old1_Field.attr("type") === "password") {
+            $password_old1_Field.attr("type", "text");
+            $togglePassword_old1_Button.removeClass("fa-eye").addClass("fa-eye-slash");
+        } else {
+            $password_old1_Field.attr("type", "password");
+            $togglePassword_old1_Button.removeClass("fa-eye-slash").addClass("fa-eye");
+        }
+    });
+
+
+    const $password1_Field = $("#password");
+    const $togglePassword1_Button = $("#toggle-password");
+
+    $togglePassword1_Button.on("click", function() {
+        if ($password1_Field.attr("type") === "password") {
+            $password1_Field.attr("type", "text");
+            $togglePassword1_Button.removeClass("fa-eye").addClass("fa-eye-slash");
+        } else {
+            $password1_Field.attr("type", "password");
+            $togglePassword1_Button.removeClass("fa-eye-slash").addClass("fa-eye");
+        }
+    });
+
+
+    const $password_confirmation1_Field = $("#password_confirmation");
+    const $togglePassword_confirmation1_Button = $("#toggle-password-confirmation");
+
+    $togglePassword_confirmation1_Button.on("click", function() {
+    if ($password_confirmation1_Field.attr("type") === "password") {
+        $password_confirmation1_Field.attr("type", "text");
+        $togglePassword_confirmation1_Button.removeClass("fa-eye").addClass("fa-eye-slash");
+    } else {
+        $password_confirmation1_Field.attr("type", "password");
+        $togglePassword_confirmation1_Button.removeClass("fa-eye-slash").addClass("fa-eye");
+    }
+    });
 
     });
 
