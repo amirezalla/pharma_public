@@ -19,12 +19,12 @@ class MailTrackingMiddleware
         // If both 'trackid' and 'destid' are present in the URL
         if ($trackid && $destid) {
             // Query the database to find an existing entry with the provided 'trackid' and 'destid'
-            $entry = DB::connection('mysql2')->table('mail_tracking')->where('fk_mail_id', $trackid)->where('fk_recipient_id', $destid)->first();
+            $entry = DB::connection('mysql2')->table('fa_mail_tracking')->where('fk_mail_id', $trackid)->where('fk_recipient_id', $destid)->first();
 
             // If no matching record is found in the database
             if (!$entry) {
                 // Insert a new record with the provided details
-                DB::connection('mysql2')->table('mail_tracking')->insert([
+                DB::connection('mysql2')->table('fa_mail_tracking')->insert([
                     'fk_mail_id' => $trackid,
                     'fk_recipient_id' => $destid,
                     'visite' => 1,
@@ -35,7 +35,7 @@ class MailTrackingMiddleware
             } else {
                 // If a matching record exists, update it by incrementing the 'visite' count
                 // and updating the 'ts_ultima_visita' timestamp
-                DB::connection('mysql2')->table('mail_tracking')->where('fk_mail_id', $trackid)->where('fk_recipient_id', $destid)->update([
+                DB::connection('mysql2')->table('fa_mail_tracking')->where('fk_mail_id', $trackid)->where('fk_recipient_id', $destid)->update([
                     'visite' => $entry->visite + 1,
                     'unscribe' => $unsubscribe,
                     'ts_ultima_visita' => now()
@@ -51,7 +51,7 @@ class MailTrackingMiddleware
             if ($queryWithoutTracking) {
                 $urlWithoutTracking .= '?' . $queryWithoutTracking;
             }          
-            if($request->is('*disiscrizione-dalla-newsletter-marigo-lab*') || $request->is('*disiscrizione-newsletter*') ){
+            if($request->is('*disiscrizione-dalla-newsletter-marigo-pharma*') || $request->is('*disiscrizione-newsletter*') ){
 
             }
             else{
