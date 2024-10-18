@@ -41,6 +41,7 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             LanguageManager::class,
             \App\Http\Middleware\CheckCartRecord::class,
+            \App\Http\Middleware\MailTrackingMiddleware::class,
 
         ],
 
