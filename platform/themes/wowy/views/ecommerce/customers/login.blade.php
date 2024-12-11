@@ -92,7 +92,7 @@
                                                 <img src={{ $dataUri }}>
                                             </div>
                                             <div class="form__password">
-                                                <input type="text" id="captcha-login"
+                                                <input type="text" id="captcha-login" name="captcha"
                                                     placeholder="Scrivi il risultato della somma a fianco">
                                             </div>
                                             <span class="text-danger captcha-error"
