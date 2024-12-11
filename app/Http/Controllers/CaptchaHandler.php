@@ -14,6 +14,17 @@ use Illuminate\Support\Facades\Crypt;
 class CaptchaHandler extends BaseController
 {
 
+    public static function validateLoginForm($captcha){
+        $userCaptchaResponse = intval($captcha);
+        $decryptedAnswer = intval(Crypt::decryptString(session('login_form_captcha_answer')));
+
+        if ($userCaptchaResponse === $decryptedAnswer) {
+            return true;
+        } else {
+            // Optionally, you could add more information here to help debug the issue
+            return false;
+        }
+    }
 
     public static function validateContactForm1($captcha){
         $userCaptchaResponse = intval($captcha);

@@ -75,7 +75,7 @@ trait AuthenticatesUsers
                 'required',
                 'numeric',
                 function($attribute, $value, $fail){
-                    if(CaptchaHandler::validateContactForm1($value)){
+                    if(CaptchaHandler::validateLoginForm($value)){
                         $fail("The :attribute is incorrect.");
                     }
                 }
