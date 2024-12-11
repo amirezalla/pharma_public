@@ -17,7 +17,7 @@ class ContactRequest extends Request
                 'required',
                 'numeric',
                 function($attribute, $value, $fail){
-                    if(CaptchaHandler::validateContactForm1($value)){
+                    if(!CaptchaHandler::validateContactForm1($value)){
                         $fail("The :attribute is incorrect.");
                     }
                 }

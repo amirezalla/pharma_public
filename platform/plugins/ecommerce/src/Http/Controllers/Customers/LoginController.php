@@ -136,8 +136,20 @@ class LoginController extends Controller
         $request->merge([
             'captcha'=>0
         ]);
-        dd($request->all(),CaptchaHandler::validateLoginForm1($request->captcha));
-        $this->validateLogin($request);
+        $request->validate([
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+            'captcha' => [
+                'required',
+                'numeric',
+                function($attribute, $value, $fail){
+                    if(!CaptchaHandler::validateLoginForm1($value)){
+                        $fail("The :attribute is incorrect.");
+                    }
+                }
+            ],
+        ]);
+        // $this->validateLogin($request);
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
