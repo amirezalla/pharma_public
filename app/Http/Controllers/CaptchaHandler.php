@@ -17,7 +17,7 @@ class CaptchaHandler extends BaseController
     public static function validateLoginForm1($captcha){
         $userCaptchaResponse = intval($captcha);
         $decryptedAnswer = intval(Crypt::decryptString(session('login_form_captcha_answer')));
-        dd($decryptedAnswer);
+        dd($userCaptchaResponse,$decryptedAnswer);
         if ($userCaptchaResponse === $decryptedAnswer) {
             return true;
         } else {
