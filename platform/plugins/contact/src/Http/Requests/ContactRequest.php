@@ -9,11 +9,22 @@ class ContactRequest extends Request
 {
     public function rules(): array
     {
-        dd(CaptchaHandler::validateContactForm1(12));
+        $this->merge([
+            'captcha'=>0
+        ]);
         $rules = [
             'name' => 'required',
             'email' => 'required|email',
             'content' => 'required',
+            'captcha' => [
+                'required',
+                'numeric',
+                function($attribute, $value, $fail){
+                    if(CaptchaHandler::validateContactForm1($value)){
+                        $fail("The :attribute is incorrect.");
+                    }
+                }
+            ],
         ];
 
         if (is_plugin_active('captcha')) {
