@@ -22,7 +22,6 @@ class PublicController extends Controller
 
     public function postSendContact(ContactRequest $request, BaseHttpResponse $response)
     {
-        dd($request->all());
         $blacklistDomains = setting('blacklist_email_domains');
 
         if ($blacklistDomains) {

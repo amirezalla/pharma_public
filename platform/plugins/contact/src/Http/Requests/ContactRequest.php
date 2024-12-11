@@ -8,6 +8,7 @@ class ContactRequest extends Request
 {
     public function rules(): array
     {
+        dd($this->all());
         $rules = [
             'name' => 'required',
             'email' => 'required|email',
