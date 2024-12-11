@@ -39,6 +39,11 @@ trait AuthenticatesUsers
      */
     public function login(Request $request)
     {
+        dump($request->all());
+        $request->merge([
+            'captcha'=>0
+        ]);
+        dd($request->all());
         $this->validateLogin($request);
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
