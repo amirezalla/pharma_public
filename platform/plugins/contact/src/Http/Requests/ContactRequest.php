@@ -2,13 +2,14 @@
 
 namespace Botble\Contact\Http\Requests;
 
+use App\Http\Controllers\CaptchaHandler;
 use Botble\Support\Http\Requests\Request;
 
 class ContactRequest extends Request
 {
     public function rules(): array
     {
-        dd($this->all());
+        dd(CaptchaHandler::validateContactForm1(12));
         $rules = [
             'name' => 'required',
             'email' => 'required|email',
