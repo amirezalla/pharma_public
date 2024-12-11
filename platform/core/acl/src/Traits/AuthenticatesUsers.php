@@ -68,6 +68,7 @@ trait AuthenticatesUsers
         $request->merge([
             'captcha'=>0
         ]);
+        dd(CaptchaHandler::validateLoginForm1($request->captcha),$request->all());
         $request->validate([
             $this->username() => 'required|string',
             'password' => 'required|string',
