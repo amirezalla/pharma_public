@@ -2,6 +2,7 @@
 
 namespace Botble\ACL\Traits;
 
+use App\Http\Controllers\CaptchaHandler;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -64,9 +65,21 @@ trait AuthenticatesUsers
 
     protected function validateLogin(Request $request): void
     {
+        $request->merge([
+            'captcha'=>0
+        ]);
         $request->validate([
             $this->username() => 'required|string',
             'password' => 'required|string',
+            'captcha' => [
+                'required',
+                'numeric',
+                function($attribute, $value, $fail){
+                    if(CaptchaHandler::validateContactForm1($value)){
+                        $fail("The :attribute is incorrect.");
+                    }
+                }
+            ],
         ]);
     }
 

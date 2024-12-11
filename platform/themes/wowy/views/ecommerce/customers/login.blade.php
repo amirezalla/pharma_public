@@ -96,7 +96,7 @@
                                                     placeholder="Scrivi il risultato della somma a fianco">
                                             </div>
                                             <span class="text-danger captcha-error"
-                                                style="color:red;font-size:0.8em;text-align:left;margin-left:20px"></span>
+                                                style="color:red;font-size:0.8em;text-align:left;margin-left:20px">{{ $errors->has('captcha') ? $errors->first('captcha') : "" }}</span>
                                         </div>
                                     </div>
                                 </div>
