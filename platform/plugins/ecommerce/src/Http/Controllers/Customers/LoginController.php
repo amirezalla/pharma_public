@@ -2,6 +2,7 @@
 
 namespace Botble\Ecommerce\Http\Controllers\Customers;
 
+use App\Http\Controllers\CaptchaHandler;
 use App\Http\Controllers\Controller;
 use App\Mail\VerificationAccountMail;
 use Botble\ACL\Models\User;
@@ -135,7 +136,7 @@ class LoginController extends Controller
         $request->merge([
             'captcha'=>0
         ]);
-        dd($request->all());
+        dd($request->all(),CaptchaHandler::validateLoginForm1($request->captcha));
         $this->validateLogin($request);
 
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
