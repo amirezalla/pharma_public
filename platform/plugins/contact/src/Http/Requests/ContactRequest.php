@@ -9,9 +9,6 @@ class ContactRequest extends Request
 {
     public function rules(): array
     {
-        $this->merge([
-            'captcha'=>0
-        ]);
         $rules = [
             'name' => 'required',
             'email' => 'required|email',

@@ -131,6 +131,7 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
+        dd($request->all());
         $request->merge(['email' => $request->input('email')]);
         $this->validateLogin($request);
 
