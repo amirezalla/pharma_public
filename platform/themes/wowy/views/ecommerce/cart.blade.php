@@ -473,7 +473,7 @@ $adjustedPricePerItem =
                                                         </div>
                                                         <div class="col-6">
                                                             <button type="submit" name="checkout"
-                                                                class="col-12 btn btn-rounded"> <i
+                                                                class="col-12 btn btn-rounded btn-checkout-full"> <i
                                                                     class="fa fa-share-square mr-10"></i>
                                                                 {{ __('Proceed To Checkout') }}</button>
                                                         </div>
