@@ -357,7 +357,7 @@
                 success: function (a) {
                     if (a.error) return window.showAlert("alert-danger", a.message), t.closest(".table--cart").removeClass("content-loading"), t.closest(".detail-qty").find(".qty-val").text(a.data.count), !1;
                     e(".section--shopping-cart").load(window.location.href + " .section--shopping-cart > *", (function () {
-                        t.closest(".table--cart").removeClass("content-loading"), window.showAlert("alert-success", a.message)
+                        t.closest(".table--cart").removeClass("content-loading"), window.showAlert("alert-success", a.message), document.querySelector('.btn-checkout-full').disabled = false
                     })), e.ajax({
                         url: window.siteUrl + "/ajax/cart",
                         method: "GET",
