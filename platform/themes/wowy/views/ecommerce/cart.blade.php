@@ -498,7 +498,6 @@ $adjustedPricePerItem =
                                                     <tbody>
 
 
-
                                                         @if (auth('customer'))
                                                             @php
                                                                 session()->forget('shippingAmount');
@@ -521,7 +520,7 @@ $adjustedPricePerItem =
                                                                             'AltroPharma') &&
                                                                     $orderAmount < 300
                                                                 ) {
-                                                                    $shippingAmount = 0;
+                                                                    $shippingAmount = 10;
                                                                 }
                                                                 if (
                                                                     $region == ('campania' || 'lazio') &&
@@ -537,7 +536,7 @@ $adjustedPricePerItem =
                                                                     $customerType ==
                                                                     ('Farmacia' || 'Parafarmacia' || 'AltroPharma')
                                                                 ) {
-                                                                    $shippingAmount = 0;
+                                                                    $shippingAmount = 10;
                                                                 }
                                                                 session(['shippingAmount' => $shippingAmount]);
                                                                 $subtotal = Cart::instance('cart')->rawSubTotal();
