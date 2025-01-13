@@ -9762,7 +9762,8 @@ small {
 }
 
 .section--shopping-cart .table--cart.content-loading {
-    position: relative
+    position: relative;
+    background: rgba(255, 6, 6, 0.345);
 }
 
 .section--shopping-cart .table--cart.content-loading:before {
@@ -19980,7 +19981,6 @@ small {
 }
 
 .section--shopping-cart .table--cart.content-loading:before {
-    background-color: #000000aa;
     animation: button-loading-spinner 1s linear infinite;
     border-color: var(--color-primary);
     border-bottom-color: transparent;
