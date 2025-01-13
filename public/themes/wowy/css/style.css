@@ -9763,7 +9763,7 @@ small {
 
 .section--shopping-cart .table--cart.content-loading {
     position: relative;
-    background: rgba(255, 6, 6, 0.345);
+    background: rgba(75, 230, 129, 0.201);
 }
 
 .section--shopping-cart .table--cart.content-loading:before {
