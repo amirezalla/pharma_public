@@ -513,29 +513,27 @@ $adjustedPricePerItem =
                                                                 $orderAmount = Cart::instance('cart')->rawTotal();
 
                                                                 if (
-                                                                    $region == ('campania' || 'lazio') &&
-                                                                    $customerType ==
-                                                                        ('Farmacia' ||
-                                                                            'Parafarmacia' ||
-                                                                            'AltroPharma') &&
-                                                                    $orderAmount < 300
+                                                                    in_array($region, ['campania', 'lazio']) &&
+                                                                    in_array($customerType, [
+                                                                        'Farmacia',
+                                                                        'Parafarmacia',
+                                                                        'AltroPharma',
+                                                                    ])
                                                                 ) {
-                                                                    $shippingAmount = 10;
-                                                                }
-                                                                if (
-                                                                    $region == ('campania' || 'lazio') &&
-                                                                    $customerType ==
-                                                                        ('Farmacia' ||
-                                                                            'Parafarmacia' ||
-                                                                            'AltroPharma') &&
-                                                                    $orderAmount >= 300
+                                                                    if ($orderAmount < 300) {
+                                                                        $shippingAmount = 10;
+                                                                    } else {
+                                                                        // se >= 300
+                                                                        $shippingAmount = 5;
+                                                                    }
+                                                                } elseif (
+                                                                    in_array($customerType, [
+                                                                        'Farmacia',
+                                                                        'Parafarmacia',
+                                                                        'AltroPharma',
+                                                                    ])
                                                                 ) {
-                                                                    $shippingAmount = 5;
-                                                                }
-                                                                if (
-                                                                    $customerType ==
-                                                                    ('Farmacia' || 'Parafarmacia' || 'AltroPharma')
-                                                                ) {
+                                                                    // se la regione non è campania o lazio
                                                                     $shippingAmount = 10;
                                                                 }
                                                                 session(['shippingAmount' => $shippingAmount]);
