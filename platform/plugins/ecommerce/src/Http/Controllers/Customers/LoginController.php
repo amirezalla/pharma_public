@@ -133,9 +133,6 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $request->merge(['email' => $request->input('email')]);
-        $request->merge([
-            'captcha'=>0
-        ]);
         $request->validate([
             $this->username() => 'required|string',
             'password' => 'required|string',
