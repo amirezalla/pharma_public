@@ -19980,6 +19980,7 @@ small {
 }
 
 .section--shopping-cart .table--cart.content-loading:before {
+    background-color: #000000aa;
     animation: button-loading-spinner 1s linear infinite;
     border-color: var(--color-primary);
     border-bottom-color: transparent;
