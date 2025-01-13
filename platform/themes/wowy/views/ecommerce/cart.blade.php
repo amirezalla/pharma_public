@@ -510,7 +510,7 @@ $adjustedPricePerItem =
 
                                                                 $weight = 0.0;
                                                                 $IVAPERCENTAGE = 1.22;
-                                                                $orderAmount = Cart::instance('cart')->rawTotal();
+                                                                $orderAmount = Cart::instance('cart')->rawSubTotal();
 
                                                                 if (
                                                                     in_array($region, ['campania', 'lazio']) &&
