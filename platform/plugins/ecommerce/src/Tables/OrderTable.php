@@ -85,7 +85,7 @@ class OrderTable extends TableAbstract
 
         $data = $data
             ->addColumn('operations', function ($item) {
-                return $this->getOperations('orders.edit', 'orders.destroy', $item,"<a href='https://marigolab.it/public/admin/orders/generate-invoice/$item->id' class='btn btn-icon btn-sm btn-primary'><i class='fa fa-download'></i></a>");
+                return $this->getOperations('orders.edit', 'orders.destroy', $item,"<a href='https://marigopharma.it/public/admin/orders/generate-invoice/$item->id' class='btn btn-icon btn-sm btn-primary'><i class='fa fa-download'></i></a>");
             })
             ->filter(function ($query) {
                 $keyword = $this->request->input('search.value');
