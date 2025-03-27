@@ -98,8 +98,8 @@ class LoginController extends Controller
                 'regione'=>$address->state,
             ]);
             Mail::to('a.allahverdi@icoa.it')->send(new UserRegisteredNotif($user));
-            Mail::to('info@marigopharma.it')->send(new UserRegisteredNotif($user));
-            Mail::to('alongobardi@marigoitalia.it')->send(new UserRegisteredNotif($user));
+            // Mail::to('info@marigopharma.it')->send(new UserRegisteredNotif($user));
+            // Mail::to('alongobardi@marigoitalia.it')->send(new UserRegisteredNotif($user));
             return redirect('/login?verify_message=neutral');
         }else if($user->email_verified_at && $user->status == 'locked'){
             return redirect('/login?verify_message=true');
