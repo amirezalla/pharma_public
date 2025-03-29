@@ -246,9 +246,18 @@
 
     $(".register--btn--submit").click(function(e) {
         e.preventDefault();
+
+        // If the button is already disabled, do nothing
+        if ($(this).prop('disabled')) {
+            return;
+        }
+
+        // Disable the button to prevent multiple clicks
+        $(this).prop('disabled', true);
+
         let allValid = true;
 
-        // Loop through each text input field in the form
+        // Validate text fields
         $("#registration-form input[type='text']").each(function() {
             if ($(this).val().trim() === "") {
                 allValid = false;
@@ -257,6 +266,8 @@
                 $(this).css('border', '');
             }
         });
+
+        // Validate email fields
         $("#registration-form input[type='email']").each(function() {
             if ($(this).val().trim() === "") {
                 allValid = false;
@@ -265,6 +276,8 @@
                 $(this).css('border', '');
             }
         });
+
+        // Validate password fields
         $("#registration-form input[type='password']").each(function() {
             if ($(this).val().trim() === "") {
                 allValid = false;
@@ -273,49 +286,60 @@
                 $(this).css('border', '');
             }
         });
+
+        // Check if realtime email error is displayed
         if ($('#realtime-email-error').css('display') === 'block') {
             allValid = false;
         }
-        let isCheckboxChecked = false;
 
+        // Check at least one checkbox is checked
+        let isCheckboxChecked = false;
         $("#registration-form input[type='checkbox']").each(function() {
             if ($(this).is(':checked')) {
                 isCheckboxChecked = true;
-                return false; // Break the loop as we found a checked checkbox
+                return false; // break
             }
         });
-
-        if (isCheckboxChecked) {
-            $('.custome-checkbox').css('border', ''); // Reset border if a checkbox is checked
+        if (!isCheckboxChecked) {
+            $('.custome-checkbox').css('border', '1px solid red');
+            allValid = false;
         } else {
-            $('.custome-checkbox').css('border', '1px solid red'); // Set red
+            $('.custome-checkbox').css('border', '');
         }
 
-        // CAPTCHA validation
+        // If any basic validation failed, re-enable button and stop here
+        if (!allValid) {
+            $(this).prop('disabled', false);
+            return;
+        }
+
+        // CAPTCHA validation via axios
         let captchaInput = $("#captcha-register").val();
         axios.post('/captcha-validator/register', {
                 captcha: captchaInput
             })
             .then(response => {
+                // If CAPTCHA and all validations pass, submit form
                 if (response.data.valid && allValid && isCheckboxChecked) {
-                    // If CAPTCHA and all other validations are passed, submit the form
-                    $('.form--auth').submit();
-                } else if (response.data.valid && !allValid) {
-
+                    $('#registration-form').submit();
                 } else {
-                    // Handle CAPTCHA validation failure
+                    // Invalid CAPTCHA or some other check failed;
+                    // re-enable button so user can correct and try again
                     $('.captcha-error').html('La somma non è corretta');
+                    $(this).prop('disabled', false);
                 }
             })
             .catch(error => {
+                // Server error or 422 (incorrect CAPTCHA)
                 if (error.response && error.response.status === 422) {
-                    // Handle specific error here for CAPTCHA
                     $('.captcha-error').html('La somma non è corretta!');
                     refreshRegisterFormCaptcha();
                 }
+                // Re-enable so user can try again
+                $(this).prop('disabled', false);
             });
-
     });
+
 
     function refreshRegisterFormCaptcha() {
         axios.get('/refresh-captcha/register')

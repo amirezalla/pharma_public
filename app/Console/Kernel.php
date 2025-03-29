@@ -96,7 +96,7 @@ class Kernel extends ConsoleKernel
         //     $schedule->call(function () {
         //         // Code for the second request
         //         $client = new Client();
-        //         $response = $client->request('GET', '//marigolab.it/clientiImportSchedule');
+        //         $response = $client->request('GET', '//marigopharma.it/clientiImportSchedule');
         //         // Optional: Handle the response
 
         //         // Get the status code of the response.
