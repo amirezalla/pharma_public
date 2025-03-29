@@ -98,6 +98,18 @@ public function validateRegisterForm(Request $request)
     }
 }
 
+
+public static function validateregisterForm1($captcha){
+    $userCaptchaResponse = intval($captcha);
+    $decryptedAnswer = intval(Crypt::decryptString(session('register_form_captcha_answer')));
+    if ($userCaptchaResponse === $decryptedAnswer) {
+        return true;
+    } else {
+        // Optionally, you could add more information here to help debug the issue
+        return false;
+    }
+}
+
 public function refreshRegisterForm()
 {
     $number1 = mt_rand(1, 9);

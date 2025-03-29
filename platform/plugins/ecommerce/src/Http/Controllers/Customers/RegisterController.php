@@ -53,29 +53,47 @@ class RegisterController extends Controller
 
     public function register(Request $request, BaseHttpResponse $response)
     {
-//        $this->validator($request->input())->validate();
-//
-//
-//        do_action('customer_register_validation', $request);
-
+        // 1) Validate all form inputs server-side (including CAPTCHA).
+        //    This is essential to prevent bots from bypassing your front-end checks.
+        $request->validate([
+            'name'     => 'required|max:255',
+            'email'    => 'required|email|max:255|unique:ec_customers',
+            'password' => 'required|min:6|confirmed',
+    
+            // We assume your math CAPTCHA is numeric and requires a function check:
+            'captcha' => [
+                'required',
+                'numeric',
+                function ($attribute, $value, $fail) {
+                    // Call your custom CAPTCHA validator method.
+                    // Make sure `CaptchaHandler::validateRegisterForm1($value)` returns
+                    // a boolean indicating whether the CAPTCHA is correct.
+                    if (!\CaptchaHandler::validateRegisterForm1($value)) {
+                        $fail('The ' . $attribute . ' is incorrect.');
+                    }
+                },
+            ],
+    
+            // Terms and policy
+            'agree_terms_and_policy' => 'accepted:1',
+        ]);
+    
+        // 2) If validation passes, we proceed with creating the customer.
+        //    (Same approach as your existing code)
         $customer = $this->create($request->input());
-
-
+    
         event(new Registered($customer));
-
-        // if (EcommerceHelper::isEnableEmailVerification()) {
-        //     return $this->registered($request, $customer)
-        //         ?: $response
-        //             ->setNextUrl(route('customer.login'))
-        //             ->setMessage(__('We have sent you an email to verify your email. Please check and confirm your email address!'));
-        // }
-
+    
+        // If you require email confirmation, set up that logic:
         $customer->confirmed_at = Carbon::now();
         $this->customerRepository->createOrUpdate($customer);
-//        $this->guard()->login($customer); // dont login for the user and just redirect
-
-        return $response->setNextUrl('users/verify?email='.$customer->email)
-        ->setMessage("Registrato con successo! Ti abbiamo inviato un'e-mail per verificare il tuo account!");    }
+    
+        // 3) Redirect after successful registration
+        return $response
+            ->setNextUrl('users/verify?email=' . $customer->email)
+            ->setMessage("Registrato con successo! Ti abbiamo inviato un'e-mail per verificare il tuo account!");
+    }
+    
 
     protected function validator(array $data)
     {
