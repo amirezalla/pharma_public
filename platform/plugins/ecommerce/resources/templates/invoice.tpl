@@ -160,7 +160,7 @@
         <td>
             <div class="logo-container">
                 {% if logo %}
-                    <img src="https://marigopharma.it/storage/logo-header-4.png" style="width:100%; max-width:150px;" alt="{{ 'site_title' }}">
+                    <img src="https://marigopharma.it/storage/catalog/marigo-pharma.png" style="width:100%; max-width:150px;" alt="{{ 'site_title' }}">
                 {% endif %}
             </div>
         </td>
