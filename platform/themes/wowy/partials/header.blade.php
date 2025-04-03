@@ -45,7 +45,8 @@
         if ($page) {
             $headerStyle = $page->getMetaData('header_style', true) ?: $headerStyle;
         }
-        $headerStyle = $headerStyle && in_array($headerStyle, array_keys(get_layout_header_styles())) ? $headerStyle : '';
+        $headerStyle =
+            $headerStyle && in_array($headerStyle, array_keys(get_layout_header_styles())) ? $headerStyle : '';
     @endphp
 </head>
 
@@ -154,10 +155,21 @@
             <div class="container">
                 <div class="header-wrap header-space-between">
                     @if (theme_option('logo'))
-                        <div class="logo logo-width-1">
-                            <a href="{{ route('public.index') }}"><img
-                                    src="{{ RvMedia::getImageUrl(theme_option('logo')) }}"
-                                    alt="{{ theme_option('site_title') }}"></a>
+                        <div class="row">
+                            <div class="col">
+                                <div class="logo logo-width-1">
+                                    <a href="{{ route('public.index') }}"><img
+                                            src="{{ RvMedia::getImageUrl(theme_option('logo')) }}"
+                                            alt="{{ theme_option('site_title') }}"></a>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="logo logo-width-1">
+                                    <a href="{{ route('public.index') }}"><img
+                                            src="{{ RvMedia::getImageUrl(theme_option('logo')) }}"
+                                            alt="{{ theme_option('site_title') }}"></a>
+                                </div>
+                            </div>
                         </div>
                     @endif
                     @if (is_plugin_active('ecommerce') && isset($categories))
@@ -211,7 +223,10 @@
 
                     @if (theme_option('enabled_browse_categories_on_header', 'yes') == 'yes')
                         @php
-                            $openBrowse = $page && $page->template == 'homepage' && $page->getMetaData('expanding_product_categories_on_the_homepage', true) == 'yes';
+                            $openBrowse =
+                                $page &&
+                                $page->template == 'homepage' &&
+                                $page->getMetaData('expanding_product_categories_on_the_homepage', true) == 'yes';
                             $cantCloseBrowse = $openBrowse && $headerStyle == 'header-style-2';
                         @endphp
                         <div class="main-categories-wrap d-none d-lg-block">
@@ -392,7 +407,10 @@
                                 <div class="lang-curr-dropdown lang-dropdown-active">
                                     <ul>
                                         @php
-                                            $showRelated = setting('language_show_default_item_if_current_version_not_existed', true);
+                                            $showRelated = setting(
+                                                'language_show_default_item_if_current_version_not_existed',
+                                                true,
+                                            );
                                         @endphp
 
                                         @foreach (Language::getSupportedLocales() as $localeCode => $properties)

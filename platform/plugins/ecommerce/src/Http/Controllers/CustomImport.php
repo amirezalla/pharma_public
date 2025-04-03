@@ -624,7 +624,7 @@ class CustomImport extends BaseController
 $customerIds = Customer::whereNotNull('codice')->pluck('id');
 
         // Delete pricelist entries for customers not in the fetched list
-        DB::connection('mysql')->table('ec_pricelist')->whereNotIn('customer_id', $customerIds)->delete();
+        DB::connection('mysql')->table('ec_pricelist')->truncate();
 
         // Process cli_scontistica in chunks
         DB::connection('mysql2')->table('cli_scontistica')
