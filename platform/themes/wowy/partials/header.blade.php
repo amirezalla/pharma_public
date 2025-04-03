@@ -165,8 +165,8 @@
                             </div>
                             <div class="col">
                                 <div class="logo logo-width-1">
-                                    <a href="{{ route('public.index') }}"><img
-                                            src="{{ RvMedia::getImageUrl(theme_option('logo')) }}"
+                                    <a href="https://marigoitalia.it"><img
+                                            src="https://marigopharma.it/public/storage/catalog/marigo-italia-40.png"
                                             alt="{{ theme_option('site_title') }}"></a>
                                 </div>
                             </div>
