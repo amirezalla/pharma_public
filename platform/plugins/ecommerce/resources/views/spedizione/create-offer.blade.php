@@ -230,7 +230,7 @@
             // If users array is empty, set users to 'all'
             if (users.length === 0) users = 'all';
 
-            axios.post("/admin/spc_store", {
+            axios.post("/spc_store", {
                     users: users,
                     couponcode: couponcode.value,
                     amount: amount.value,
@@ -254,7 +254,7 @@
                             if (result.isConfirmed) {
                                 // Redirect to a specific page
                                 window.location.href =
-                                '/admin/ecommerce/spedizione/list'; // Replace with your specific page URL
+                                    '/admin/ecommerce/spedizione/list'; // Replace with your specific page URL
                             }
                         });
                     } else {

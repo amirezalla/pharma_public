@@ -180,8 +180,8 @@ Route::post('/saveanswer', [QuestionnaireController::class, 'saveAnswers'])
     ->name('questionary.save-answers');
 
 
-    Route::post('/admin/spc_store', [SPCController::class, 'store']);
-    Route::post('/admin/spc_deactive', [SPCController::class, 'deactive']);
+    Route::post('/spc_store', [SPCController::class, 'store']);
+    Route::post('/spc_deactive', [SPCController::class, 'deactive']);
     Route::post('/spc_apply', [SPCController::class, 'applyCoupon']);
     Route::post('/spc_remove', [SPCController::class, 'removeCoupon']);
 
